@@ -2589,3 +2589,19 @@ h3, h4, .card-title, .product-title { letter-spacing: -0.02em; }
     word-break: normal;
 }
 #acclaim .acclaim-quote-meta { max-width: 100%; }
+
+/* Divisions: clean static logos (not animated), contained & centered on the card.
+   Overrides the per-division object-fit:cover rules that were meant for the videos. */
+#divisions .division-card { animation: none !important; }
+#divisions .division-logo-container {
+    padding: clamp(1.25rem, 3vw, 2.25rem) !important;
+    background: #ffffff;
+}
+#divisions .division-logo {
+    width: auto !important;
+    height: auto !important;
+    max-width: 78% !important;
+    max-height: 78% !important;
+    object-fit: contain !important;
+    display: block;
+}

@@ -2576,3 +2576,16 @@ h3, h4, .card-title, .product-title { letter-spacing: -0.02em; }
 #products .product-image[alt="Charging Accessories"] {
     clip-path: inset(7%);
 }
+
+/* Keep Acclaim quote copy inside its column so it never overlaps the "Acclaim" word */
+#acclaim .acclaim-quotes-left {
+    padding-right: clamp(1.5rem, 4vw, 3.5rem);
+    box-sizing: border-box;
+}
+#acclaim .acclaim-quote-text {
+    white-space: normal;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+#acclaim .acclaim-quote-meta { max-width: 100%; }

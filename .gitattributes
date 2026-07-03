@@ -1,0 +1,2 @@
+# Consistent LF in the repo; avoids phantom diffs on Windows (CRLF vs index).
+* text=auto eol=lf

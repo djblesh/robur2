@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Robur Fire Solutions, fire detection, suppression and safety systems that protect mining personnel, equipment and infrastructure.">
+    <title>Fire Solutions, Robur Mining Solutions</title>
+    <link rel="preload" as="image" href="images/fire-theme.jpeg" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="Bagerich/Bagerich-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="web-styles.css">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+    <style>
+        :root {
+            --fire-font: var(--font-default);
+            --fire-cream: rgba(255, 248, 242, 0.98);
+            --fire-cream-muted: rgba(255, 235, 224, 0.88);
+            --fire-accent-line: rgba(255, 140, 95, 0.55);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        html, body {
+            margin: 0;
+            min-height: 100%;
+        }
+        body {
+            min-height: 100vh;
+            font-family: var(--fire-font);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            background-color: #1a0a05;
+            background-image: url('images/fire-theme.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        button,
+        .floating-more-button {
+            font-family: var(--fire-font);
+        }
+        .floating-more-button .more-text {
+            letter-spacing: 0.06em;
+            font-weight: 600;
+            font-size: 0.72rem !important;
+            text-transform: uppercase;
+        }
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
+        }
+        .fire-solutions-nav.main-nav {
+            background: rgba(45, 18, 12, 0.42) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 235, 224, 0.12);
+        }
+        .fire-solutions-nav .nav-logo {
+            margin-right: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.75rem 1rem;
+            flex-wrap: wrap;
+        }
+        .fire-solutions-nav .nav-logo > a[href="index.html"]:not(.fire-back) {
+            display: block;
+            line-height: 0;
+            flex-shrink: 0;
+        }
+        .fire-solutions-nav.main-nav .nav-container {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            align-items: center;
+            gap: 0.75rem 1.25rem;
+            padding: 0.9rem clamp(0.5rem, 2vw, 1.25rem) 1rem;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        .fire-solutions-nav .nav-links {
+            display: flex !important;
+            margin-left: 0;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.35rem 1.35rem;
+            min-width: 0;
+            overflow-x: visible;
+            padding: 0.2rem 0 0.25rem;
+            transform: translateX(0.45rem);
+        }
+        .fire-solutions-nav .nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--fire-cream) !important;
+            flex-shrink: 0;
+            font-size: clamp(0.72rem, 1.5vw, 0.88rem);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            padding: 0.46rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(255, 248, 242, 0.12);
+            border: 1px solid rgba(255, 235, 224, 0.42);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            box-sizing: border-box;
+            transition:
+                color 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease,
+                letter-spacing 0.2s ease;
+        }
+        .fire-solutions-nav .nav-link:hover {
+            color: #fff !important;
+            letter-spacing: 0.05em;
+            background: rgba(255, 248, 242, 0.2);
+            border-color: rgba(255, 235, 224, 0.55);
+        }
+        .fire-solutions-nav .nav-links .fire-back {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            color: var(--fire-cream) !important;
+            text-decoration: none;
+            font-size: clamp(0.72rem, 1.5vw, 0.88rem);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            opacity: 1;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            line-height: 1.25;
+            margin: 0;
+            padding: 0.46rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(255, 248, 242, 0.12);
+            border: 1px solid rgba(255, 235, 224, 0.42);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            flex-shrink: 0;
+            box-sizing: border-box;
+            transition:
+                color 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease,
+                letter-spacing 0.2s ease;
+        }
+        .fire-solutions-nav .nav-links .fire-back:hover {
+            color: #fff !important;
+            letter-spacing: 0.05em;
+            background: rgba(255, 248, 242, 0.2);
+            border-color: rgba(255, 235, 224, 0.55);
+        }
+        .fire-solutions-nav .fire-solutions-nav-logo-wrap {
+            display: block;
+            height: 112px;
+            max-width: min(220px, 34vw);
+            border-radius: 0;
+            overflow: hidden;
+            box-sizing: border-box;
+            background: transparent;
+            border: none;
+        }
+        .fire-solutions-nav video.fire-solutions-nav-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background-color: #1a0a05;
+        }
+        .fire-page {
+            max-width: none;
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+            /* Clear fixed nav; edge-to-edge images on the body background */
+            padding: clamp(9.35rem, 20vw, 10.85rem) 0 2rem 0;
+        }
+        /* Product blocks sit directly on the fire background, no card / glass panels */
+        .fire-section {
+            scroll-margin-top: 115px;
+            margin-top: 2.5rem;
+            padding: 0;
+            max-width: none;
+            width: 100%;
+            background: transparent !important;
+            border: 0 !important;
+            outline: none !important;
+            box-shadow: none !important;
+            border-radius: 0;
+            overflow: visible;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            animation: none;
+        }
+        .fire-section:first-of-type {
+            margin-top: 1.75rem;
+        }
+        /* Extinguishers: sit a bit higher under the nav */
+        #extinguishers {
+            margin-top: 0.85rem;
+        }
+        #extinguishers h2 {
+            padding-top: 0.35rem;
+        }
+        .fire-section h2 {
+            position: relative;
+            margin: 0 0 1.15rem;
+            padding: 0.5rem clamp(0.75rem, 3vw, 1.5rem) 1rem;
+            font-size: clamp(1.75rem, 5.2vw, 2.65rem);
+            font-weight: 700;
+            line-height: 1.12;
+            color: var(--fire-cream);
+            letter-spacing: -0.02em;
+            text-align: center;
+            background: transparent;
+            text-shadow:
+                0 2px 6px rgba(0, 0, 0, 0.9),
+                0 0 36px rgba(0, 0, 0, 0.45);
+        }
+        .fire-section h2::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0.35rem;
+            transform: translateX(-50%);
+            width: min(5.5rem, 42vw);
+            height: 2px;
+            border-radius: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--fire-accent-line),
+                rgba(255, 200, 160, 0.35),
+                var(--fire-accent-line),
+                transparent
+            );
+            opacity: 0.95;
+        }
+        .fire-section .fire-section-figure {
+            margin: 0;
+            border-radius: 0;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .fire-image-link {
+            display: block;
+            line-height: 0;
+            cursor: pointer;
+        }
+        /* Full-tile hit target: global web-styles add ::after to .html links unless .fire-image-link is excluded */
+        .fire-page .fire-section-figure:has(> .fire-image-link) {
+            position: relative;
+        }
+        .fire-page .fire-section-figure > .fire-image-link {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: block;
+        }
+        .fire-page .fire-section-figure > .fire-image-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .fire-image-link:hover img,
+        .fire-image-link:focus-visible img {
+            transform: scale(1.015);
+            transition: transform 0.2s ease;
+        }
+        .fire-section .fire-section-figure img {
+            width: 100%;
+            height: auto;
+            max-height: none;
+            object-fit: cover;
+            display: block;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .fire-page img {
+            border-radius: 0 !important;
+            box-shadow: none !important;
+        }
+        .fire-extinguisher-gallery,
+        .fire-sprinkler-gallery,
+        .fire-hydrant-gallery,
+        .fire-hose-gallery,
+        .fire-aerosol-gallery,
+        .fire-smart-alarm-gallery,
+        .fire-amfes-gallery,
+        .fire-services-gallery {
+            --fire-gallery-gap: clamp(0.65rem, 1.75vw, 1.15rem);
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: var(--fire-gallery-gap);
+            width: 100%;
+            max-width: min(72rem, 100%);
+            margin: 0 auto;
+            padding: 0 clamp(0.75rem, 3vw, 1.5rem);
+            box-sizing: border-box;
+        }
+        @media (max-width: 480px) {
+            .fire-extinguisher-gallery,
+            .fire-sprinkler-gallery,
+            .fire-hydrant-gallery,
+            .fire-hose-gallery,
+            .fire-aerosol-gallery,
+            .fire-smart-alarm-gallery,
+            .fire-amfes-gallery,
+            .fire-services-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        .fire-extinguisher-gallery .fire-section-figure,
+        .fire-sprinkler-gallery .fire-section-figure,
+        .fire-hydrant-gallery .fire-section-figure,
+        .fire-hose-gallery .fire-section-figure,
+        .fire-aerosol-gallery .fire-section-figure,
+        .fire-smart-alarm-gallery .fire-section-figure,
+        .fire-amfes-gallery .fire-section-figure,
+        .fire-services-gallery .fire-section-figure {
+            margin: 0;
+            min-width: 0;
+            min-height: 0;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: clamp(4px, 1vw, 10px);
+            box-shadow:
+                0 12px 32px rgba(0, 0, 0, 0.35),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+        }
+        /* Keep all product tiles at one consistent size */
+        #sprinkler-systems .fire-sprinkler-gallery .fire-section-figure,
+        #fire-hydrants .fire-hydrant-gallery .fire-section-figure,
+        #hose-reels .fire-hose-gallery .fire-section-figure,
+        #smart-alarm-systems .fire-smart-alarm-gallery .fire-section-figure,
+        #fire-services .fire-services-gallery .fire-section-figure {
+            grid-column: auto;
+            aspect-ratio: 1 / 1;
+        }
+        #smart-alarm-systems .fire-smart-alarm-gallery {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        #sprinkler-systems .fire-sprinkler-gallery {
+            grid-template-columns: 1fr;
+        }
+        #sprinkler-systems .fire-sprinkler-gallery .fire-section-figure {
+            grid-column: 1 / -1;
+            aspect-ratio: 16 / 9;
+        }
+        .fire-hydrant-hose-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: clamp(1rem, 3vw, 2rem);
+            align-items: start;
+            width: 100%;
+            max-width: min(72rem, 100%);
+            margin: 2.5rem auto 0;
+            padding: 0 clamp(0.75rem, 3vw, 1.5rem);
+            box-sizing: border-box;
+        }
+        .fire-hydrant-hose-pair .fire-section {
+            margin-top: 0;
+            padding: 0;
+            width: 100%;
+            max-width: none;
+        }
+        .fire-hydrant-hose-pair .fire-hydrant-gallery,
+        .fire-hydrant-hose-pair .fire-hose-gallery {
+            grid-template-columns: 1fr;
+            max-width: none;
+            padding: 0;
+            min-width: 0;
+        }
+        .fire-hose-placeholder {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.82);
+            background: linear-gradient(140deg, rgba(255, 255, 255, 0.1), rgba(20, 10, 10, 0.35));
+        }
+        @media (max-width: 768px) {
+            .fire-hydrant-hose-pair {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Aerosol + AMFEs: titles share one row; images row below (AMFE title + picture stacked on the right) */
+        .fire-aerosol-amfe-pane {
+            display: contents;
+        }
+        .fire-aerosol-amfe-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            grid-template-areas:
+                "aero-title amfe-title"
+                "aero-img amfe-img";
+            column-gap: clamp(1rem, 3vw, 2rem);
+            row-gap: clamp(0.65rem, 1.75vw, 1.15rem);
+            align-items: start;
+            width: 100%;
+            max-width: min(72rem, 100%);
+            margin: 2.5rem auto 0;
+            padding: 0 clamp(0.75rem, 3vw, 1.5rem);
+            box-sizing: border-box;
+        }
+        .fire-aerosol-amfe-pair #aerosol-generators {
+            grid-area: aero-title;
+        }
+        .fire-aerosol-amfe-pair #amfes {
+            grid-area: amfe-title;
+        }
+        .fire-aerosol-amfe-pair .fire-aerosol-gallery {
+            grid-area: aero-img;
+            grid-template-columns: 1fr;
+            max-width: none;
+            padding: 0;
+            min-width: 0;
+        }
+        .fire-aerosol-amfe-pair .fire-amfes-gallery {
+            grid-area: amfe-img;
+            grid-template-columns: 1fr;
+            max-width: none;
+            padding: 0;
+            min-width: 0;
+        }
+        .fire-aerosol-amfe-pair h2[id] {
+            scroll-margin-top: 115px;
+            min-width: 0;
+        }
+        @media (max-width: 768px) {
+            .fire-aerosol-amfe-pair {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "aero-title"
+                    "aero-img"
+                    "amfe-title"
+                    "amfe-img";
+                margin-top: 2.5rem;
+            }
+        }
+        .fire-extinguisher-gallery .fire-section-figure img,
+        .fire-sprinkler-gallery .fire-section-figure img,
+        .fire-hydrant-gallery .fire-section-figure img,
+        .fire-hose-gallery .fire-section-figure img,
+        .fire-aerosol-gallery .fire-section-figure img,
+        .fire-smart-alarm-gallery .fire-section-figure img,
+        .fire-amfes-gallery .fire-section-figure img,
+        .fire-services-gallery .fire-section-figure img {
+            width: 100%;
+            height: 100%;
+            max-height: none;
+            object-fit: cover;
+            object-position: center;
+        }
+        #fire-services h2 {
+            margin-bottom: 0.35rem;
+            padding-bottom: 0.75rem;
+        }
+        #fire-services .fire-services-gallery {
+            grid-template-columns: 1fr;
+        }
+        #fire-services .fire-services-gallery .fire-section-figure {
+            grid-column: 1 / -1;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        #fire-services .fire-services-gallery .fire-section-figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .fire-page-footer {
+            margin-top: 2rem;
+            padding: 1.5rem clamp(0.75rem, 3vw, 1.5rem) calc(2rem + env(safe-area-inset-bottom, 0px));
+            text-align: center;
+            border-top: 1px solid rgba(255, 120, 72, 0.28);
+        }
+        .fire-page-footer-inner {
+            max-width: min(72rem, 100%);
+            margin: 0 auto;
+        }
+        .fire-page-footer-inner p {
+            margin: 0.4rem 0;
+            font-size: 0.86rem;
+            letter-spacing: 0.03em;
+            color: var(--fire-cream-muted);
+        }
+        .fire-page-footer-inner .fire-page-footer-dev {
+            color: var(--fire-cream);
+            opacity: 0.92;
+        }
+        .floating-more-menu.fire-solutions-more-menu {
+            min-width: min(340px, calc(100vw - 2rem));
+            max-width: 400px;
+            max-height: min(72vh, 560px);
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 1.15rem 1.35rem;
+            -webkit-overflow-scrolling: touch;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            background: linear-gradient(
+                160deg,
+                rgba(45, 22, 14, 0.92) 0%,
+                rgba(26, 10, 5, 0.9) 45%,
+                rgba(35, 14, 8, 0.88) 100%
+            );
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 120, 72, 0.28);
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(255, 180, 140, 0.12);
+        }
+        .fire-solutions-more-menu .floating-more-link,
+        .fire-solutions-more-menu .floating-more-sublink {
+            color: var(--fire-cream-muted);
+            letter-spacing: 0.03em;
+        }
+        .fire-solutions-more-menu .floating-more-link:hover,
+        .fire-solutions-more-menu .floating-more-sublink:hover {
+            color: #fff;
+            opacity: 1;
+        }
+        .fire-more-accordion {
+            margin-bottom: 0.25rem;
+        }
+        .fire-more-accordion .more-menu-item.fire-more-accordion-item {
+            margin-bottom: 0.35rem;
+        }
+        .fire-more-accordion .fire-more-accordion-toggle {
+            padding: 0.5rem 0;
+            font-weight: 600;
+            font-size: 0.92rem;
+            letter-spacing: 0.04em;
+        }
+        .fire-more-accordion-panel .fire-more-panel-inner {
+            padding: 0.2rem 0 0.75rem 0.75rem;
+            font-size: 0.84rem;
+            line-height: 1.58;
+            color: var(--fire-cream-muted);
+            border-left: 2px solid rgba(255, 120, 72, 0.35);
+            margin-bottom: 0.25rem;
+        }
+        .fire-more-accordion-panel .fire-more-panel-inner p {
+            margin: 0 0 0.55rem;
+            color: rgba(255, 240, 230, 0.82);
+        }
+        .fire-more-accordion-panel .fire-more-panel-inner p:last-child {
+            margin-bottom: 0;
+        }
+        .fire-more-accordion-panel ul.fire-more-core-list {
+            margin: 0.2rem 0 0;
+            padding-left: 1.05rem;
+            color: rgba(255, 240, 230, 0.88);
+        }
+        .fire-more-accordion-panel ul.fire-more-core-list li {
+            margin-bottom: 0.35rem;
+            line-height: 1.4;
+        }
+        .fire-more-accordion-panel ul.fire-more-core-list li:last-child {
+            margin-bottom: 0;
+        }
+        .fire-more-nav-divider {
+            border: none;
+            border-top: 1px solid rgba(255, 120, 72, 0.25);
+            margin: 1rem 0 0.75rem;
+        }
+        @media (max-width: 900px) {
+            .fire-solutions-nav.main-nav .nav-container {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                text-align: center;
+            }
+            .fire-solutions-nav .nav-logo {
+                justify-content: center;
+            }
+            .fire-solutions-nav .nav-links {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 768px) {
+            .fire-solutions-nav .fire-solutions-nav-logo-wrap {
+                height: 52px;
+                max-width: min(200px, 55vw);
+                border-radius: 0;
+            }
+            .fire-solutions-nav.main-nav .nav-container {
+                padding-top: 0.65rem;
+                padding-bottom: 0.65rem;
+                gap: 0.65rem;
+            }
+            .fire-solutions-nav .nav-links {
+                gap: 0.45rem 0.85rem;
+            }
+            .fire-solutions-nav .nav-link {
+                font-size: clamp(0.68rem, 3vw, 0.78rem);
+                letter-spacing: 0.04em;
+                padding: 0.4rem 0.62rem;
+            }
+            .fire-solutions-nav .nav-links .fire-back {
+                font-size: clamp(0.68rem, 3vw, 0.78rem);
+                padding: 0.4rem 0.62rem;
+            }
+            .fire-page {
+                padding-top: clamp(5.5rem, 22vw, 7rem);
+            }
+            .fire-section {
+                scroll-margin-top: 82px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav fire-solutions-nav" aria-label="Solutions product categories">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" title="Robur Mining Solutions" aria-label="Robur Mining Solutions">
+                    <span class="fire-solutions-nav-logo-wrap">
+                        <video class="fire-solutions-nav-logo division-logo" autoplay loop muted playsinline preload="none" title="Fire Solutions, division video © Robur Mining Solutions">
+                            <source src="images/robur fire solutions.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="fire-back" title="Home" aria-label="Home">← Home</a>
+                <a href="#extinguishers" class="nav-link">Extinguishers</a>
+                <a href="#sprinkler-systems" class="nav-link">Sprinkler Systems</a>
+                <a href="#fire-hydrants" class="nav-link">Hydrants</a>
+                <a href="#hose-reels" class="nav-link">Hose Reels</a>
+                <a href="#aerosol-generators" class="nav-link">Aerosol Generators</a>
+                <a href="#amfes" class="nav-link">AMFEs</a>
+                <a href="#smart-alarm-systems" class="nav-link">Smart Alarm Systems</a>
+                <a href="#fire-services" class="nav-link">Services</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="fire-page">
+        <section id="extinguishers" class="fire-section">
+            <h2>Extinguishers</h2>
+            <div class="fire-extinguisher-gallery" role="group" aria-label="Fire extinguisher products">
+                <figure class="fire-section-figure">
+                    <a href="fire-smart-gallery.html?top=images%2Fextinguishers%2Fextinguisher-text.png" class="fire-image-link" aria-label="Open extinguisher image gallery" target="_blank" rel="noopener">
+                        <img src="images/extinguishers/extinguisher-text.png" alt="Portable fire extinguisher with product labeling" decoding="async" loading="lazy">
+                    </a>
+                </figure>
+                <figure class="fire-section-figure">
+                    <a href="fire-smart-gallery.html?top=images%2Fextinguishers%2Fextinguisher1.jpeg" class="fire-image-link" aria-label="Open extinguisher image gallery with this product as the header image" target="_blank" rel="noopener">
+                        <img src="images/extinguishers/extinguisher1.jpeg" alt="Fire extinguisher product" decoding="async" loading="lazy">
+                    </a>
+                </figure>
+                <figure class="fire-section-figure">
+                    <a href="fire-smart-gallery.html?top=images%2Fextinguishers%2Fextinguisher-red.png" class="fire-image-link" aria-label="Open extinguisher image gallery with this product as the header image" target="_blank" rel="noopener">
+                        <img src="images/extinguishers/extinguisher-red.png" alt="Red portable fire extinguisher" decoding="async" loading="lazy">
+                    </a>
+                </figure>
+            </div>
+        </section>
+        <section id="sprinkler-systems" class="fire-section">
+            <h2>Sprinkler Systems</h2>
+            <div class="fire-sprinkler-gallery" role="group" aria-label="Sprinkler system products">
+                <figure class="fire-section-figure">
+                    <img src="images/sprinklers/sprinkler2.jpeg" alt="Sprinkler system equipment" decoding="async" loading="lazy">
+                </figure>
+            </div>
+        </section>
+        <div class="fire-hydrant-hose-pair">
+            <section id="fire-hydrants" class="fire-section">
+                <h2>Hydrants</h2>
+                <div class="fire-hydrant-gallery" role="group" aria-label="Hydrant and water supply products">
+                    <figure class="fire-section-figure">
+                        <a href="fire-smart-gallery.html?top=images%2Fhydrants%2Fhydrant.jpeg" class="fire-image-link" aria-label="Open hydrant image gallery" target="_blank" rel="noopener">
+                            <img src="images/hydrants/hydrant.jpeg" alt="Fire hydrant equipment" decoding="async" loading="lazy">
+                        </a>
+                    </figure>
+                </div>
+            </section>
+            <section id="hose-reels" class="fire-section">
+                <h2>Hose Reels</h2>
+                <div class="fire-hose-gallery" role="group" aria-label="Hose reel products">
+                    <figure class="fire-section-figure">
+                        <img src="images/hose-reels/hose-reel.jpeg" alt="Hose reel equipment" decoding="async" loading="lazy">
+                    </figure>
+                </div>
+            </section>
+        </div>
+        <div class="fire-aerosol-amfe-pair">
+            <section class="fire-section fire-aerosol-amfe-pane" aria-labelledby="aerosol-generators">
+                <h2 id="aerosol-generators">Aerosol Generators</h2>
+                <div class="fire-aerosol-gallery" role="group" aria-label="Aerosol generator products">
+                    <figure class="fire-section-figure">
+                        <img src="images/aerosols/aerosol.jpeg" alt="Aerosol fire suppression generator" decoding="async" loading="lazy">
+                    </figure>
+                </div>
+            </section>
+            <section class="fire-section fire-aerosol-amfe-pane" aria-labelledby="amfes">
+                <h2 id="amfes">AMFEs</h2>
+                <div class="fire-amfes-gallery" role="group" aria-label="AMFE, automatic miniature fire extinguishing products">
+                    <figure class="fire-section-figure">
+                        <a href="fire-smart-gallery.html?top=images%2Famfes%2Fafmes.jpeg" class="fire-image-link" aria-label="Open AMFE image gallery" target="_blank" rel="noopener">
+                            <img src="images/amfes/afmes.jpeg" alt="AMFE automatic miniature fire extinguishing unit" decoding="async" loading="lazy">
+                        </a>
+                    </figure>
+                </div>
+            </section>
+        </div>
+        <section id="smart-alarm-systems" class="fire-section">
+            <h2>Smart Alarm Systems</h2>
+            <div class="fire-smart-alarm-gallery" role="group" aria-label="Smart alarm and monitoring products">
+                <figure class="fire-section-figure">
+                    <a href="fire-smart-gallery.html?top=images%2Fsmart-alarm%2Fsmart-alarm-systems.jpeg" class="fire-image-link" aria-label="Open smart alarm image gallery" target="_blank" rel="noopener">
+                        <img src="images/smart-alarm/smart-alarm-systems.jpeg" alt="Smart alarm system equipment" decoding="async" loading="lazy">
+                    </a>
+                </figure>
+                <figure class="fire-section-figure">
+                    <a href="fire-smart-gallery.html?top=images%2Fsmart-alarm%2Fsmart-alarm-systems3.jpeg" class="fire-image-link" aria-label="Open smart alarm image gallery with this product as the header image" target="_blank" rel="noopener">
+                        <img src="images/smart-alarm/smart-alarm-systems3.jpeg" alt="Smart alarm system equipment" decoding="async" loading="lazy">
+                    </a>
+                </figure>
+            </div>
+        </section>
+        <section id="fire-services" class="fire-section">
+            <h2>Services</h2>
+            <div class="fire-services-gallery" role="group" aria-label="Fire safety services">
+                <figure class="fire-section-figure">
+                    <img src="images/fire-services/services.jpeg" alt="Fire services, sales, installation, and maintenance" decoding="async" loading="lazy">
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <div class="floating-more">
+        <button class="floating-more-button" id="floatingMoreButton" type="button">
+            <span class="more-text">More</span>
+            <span class="more-icon">+</span>
+        </button>
+        <div class="floating-more-menu fire-solutions-more-menu" id="floatingMoreMenu">
+            <div class="fire-more-accordion" role="region" aria-label="About Robur Fire Solutions">
+                <div class="more-menu-item fire-more-accordion-item">
+                    <a href="#" class="floating-more-link fire-more-accordion-toggle">Who We Are</a>
+                    <div class="more-submenu fire-more-accordion-panel">
+                        <div class="fire-more-panel-inner">
+                            <p>Robur Fire Solutions is a new-age company which offers comprehensive expertise in fire detection and suppression systems and equipment through sales, installation and maintenance for all industries including: mining, manufacturing, transport and construction.</p>
+                            <p>With unsurpassed innovation we assert ourselves beyond all your fire hazards and challenges by providing you with unparalleled solutions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="more-menu-item fire-more-accordion-item">
+                    <a href="#" class="floating-more-link fire-more-accordion-toggle">Our Mission</a>
+                    <div class="more-submenu fire-more-accordion-panel">
+                        <div class="fire-more-panel-inner">
+                            <p>To continue giving our customers confidence and ultimate satisfaction in terms of fire safety.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="more-menu-item fire-more-accordion-item">
+                    <a href="#" class="floating-more-link fire-more-accordion-toggle">Our Vision</a>
+                    <div class="more-submenu fire-more-accordion-panel">
+                        <div class="fire-more-panel-inner">
+                            <p>We intend to constantly improve by changing, developing and renewing fire technology in the most practical and economic means.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="more-menu-item fire-more-accordion-item">
+                    <a href="#" class="floating-more-link fire-more-accordion-toggle">Core Values</a>
+                    <div class="more-submenu fire-more-accordion-panel">
+                        <div class="fire-more-panel-inner">
+                            <p>The principles that define how we work with customers and partners:</p>
+                            <ul class="fire-more-core-list">
+                                <li><strong>Integrity</strong></li>
+                                <li><strong>Optimism</strong></li>
+                                <li><strong>Innovation</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="fire-more-nav-divider">
+            <a href="contacts.html" class="floating-more-link">Contacts</a>
+            <a href="investment-opportunities.html" class="floating-more-link">Investments</a>
+        </div>
+    </div>
+
+    <footer class="fire-page-footer" aria-label="Copyright and credits">
+        <div class="fire-page-footer-inner">
+            <p>&copy; 2026 Robur Mining Solutions. All rights reserved.</p>
+            <p class="fire-page-footer-dev">Developed by Crossbow Digital</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

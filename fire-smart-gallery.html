@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Robur Fire Solutions image gallery, fire safety and suppression systems in the field.">
+    <title>Fire Gallery, Robur Mining Solutions</title>
+    <link rel="stylesheet" href="web-styles.css">
+    <style>
+        /* Override web-styles body { background: var(--bg) } (#000), paint html + body red */
+        html {
+            min-height: 100%;
+            background: linear-gradient(
+                165deg,
+                #d01f28 0%,
+                #b01218 38%,
+                #8f0e14 72%,
+                #7a0c11 100%
+            ) fixed;
+        }
+        .smart-gallery-back {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1200;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.46rem 0.88rem;
+            border-radius: 999px;
+            background: rgba(255, 248, 242, 0.12);
+            color: rgba(255, 248, 242, 0.98) !important;
+            text-decoration: none;
+            font-size: 0.84rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            border: 1px solid rgba(255, 235, 224, 0.42);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .smart-gallery-back:hover {
+            background: rgba(255, 248, 242, 0.2);
+            color: #fff !important;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(
+                165deg,
+                #d01f28 0%,
+                #b01218 38%,
+                #8f0e14 72%,
+                #7a0c11 100%
+            ) fixed !important;
+            color: #fff;
+            font-family: var(--font-default);
+        }
+        @media (max-width: 768px) {
+            html {
+                background: linear-gradient(
+                    165deg,
+                    #d01f28 0%,
+                    #b01218 38%,
+                    #8f0e14 72%,
+                    #7a0c11 100%
+                );
+                background-attachment: scroll;
+            }
+            body {
+                background: linear-gradient(
+                    165deg,
+                    #d01f28 0%,
+                    #b01218 38%,
+                    #8f0e14 72%,
+                    #7a0c11 100%
+                ) !important;
+                background-attachment: scroll !important;
+            }
+        }
+        .smart-page {
+            flex: 1 1 auto;
+            width: 100%;
+            box-sizing: border-box;
+            padding: clamp(1.25rem, 3vw, 2rem);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(1rem, 2.25vw, 1.75rem);
+            align-items: center;
+            background: transparent;
+        }
+        .top-picked {
+            margin: 0;
+            width: min(22rem, 92vw);
+            aspect-ratio: 1 / 1;
+            border-radius: 10px;
+            overflow: hidden;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+        .top-picked img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: transparent;
+        }
+        .smart-grid {
+            width: 100%;
+            max-width: min(72rem, 100%);
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(0.65rem, 1.75vw, 1.15rem);
+        }
+        .smart-empty {
+            width: 100%;
+            max-width: min(72rem, 100%);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            padding: 0.9rem 1rem;
+            border: none;
+            border-radius: 10px;
+            background: transparent;
+            text-shadow: 0 1px 2px rgba(90, 0, 0, 0.35);
+        }
+        .smart-missing {
+            width: 100%;
+            max-width: min(72rem, 100%);
+            margin: 0;
+            text-align: center;
+            color: rgba(255, 235, 224, 0.9);
+            font-size: 0.85rem;
+            line-height: 1.45;
+            letter-spacing: 0.02em;
+        }
+        .smart-grid-item {
+            margin: 0;
+            aspect-ratio: 1 / 1;
+            border-radius: clamp(4px, 1vw, 10px);
+            overflow: hidden;
+            background: transparent;
+            border: none;
+            box-shadow:
+                0 12px 32px rgba(0, 0, 0, 0.35),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+        }
+        .smart-grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            background: transparent;
+        }
+        .smart-amfe-extra {
+            width: 100%;
+            max-width: min(72rem, 100%);
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: clamp(0.65rem, 1.75vw, 1.15rem);
+        }
+        .smart-amfe-extra .smart-grid-item {
+            margin: 0;
+            aspect-ratio: 1 / 1;
+            border-radius: 0;
+            box-shadow: none;
+            background: transparent;
+        }
+        .smart-amfe-notes {
+            width: 100%;
+            max-width: min(72rem, 100%);
+            margin: 0;
+            padding: 0 clamp(0.2rem, 1vw, 0.4rem);
+            box-sizing: border-box;
+            text-align: left;
+        }
+        .smart-amfe-notes h3 {
+            margin: 0.8rem 0 0.45rem;
+            font-size: clamp(1rem, 2.3vw, 1.2rem);
+            font-weight: 700;
+            line-height: 1.35;
+            color: rgba(255, 248, 242, 0.98);
+            text-shadow: none;
+        }
+        .smart-amfe-notes p {
+            margin: 0 0 0.8rem;
+            font-size: clamp(0.88rem, 2.05vw, 0.98rem);
+            font-weight: 500;
+            line-height: 1.55;
+            letter-spacing: 0.02em;
+            color: rgba(255, 235, 224, 0.94);
+            text-shadow: none;
+        }
+        .smart-amfe-videos {
+            width: 100%;
+            max-width: min(72rem, 100%);
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: clamp(0.65rem, 1.75vw, 1.15rem);
+        }
+        .smart-amfe-video-item {
+            margin: 0;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 0;
+            box-shadow: none;
+            background: transparent;
+        }
+        .smart-amfe-video-item video {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            background: transparent !important;
+            border: 0;
+            box-shadow: none;
+            mix-blend-mode: screen;
+        }
+        #smartGrid {
+            background: transparent;
+        }
+        /* Hydrant (and similar): one or few tiles centered under the header */
+        .smart-grid.smart-grid--center-below-header {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            grid-template-columns: unset;
+        }
+        .smart-grid.smart-grid--center-below-header .smart-grid-item {
+            width: min(22rem, 92vw);
+            max-width: 100%;
+            flex: 0 0 auto;
+        }
+        .smart-extinguisher-details {
+            width: 100%;
+            max-width: min(72rem, 100%);
+            margin: 0;
+            padding: 0;
+            border: none;
+            border-radius: clamp(4px, 1vw, 10px);
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.18);
+            box-shadow:
+                0 12px 32px rgba(0, 0, 0, 0.35),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+            box-sizing: border-box;
+        }
+        .smart-extinguisher-details img {
+            width: 100%;
+            height: auto;
+            max-height: none;
+            display: block;
+            object-fit: contain;
+            object-position: center top;
+            background: transparent;
+        }
+        /* Full-bleed strip under header (extinguisher1 + fireball) */
+        .smart-extinguisher-wide-cover {
+            width: 100vw;
+            max-width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            overflow: hidden;
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.12);
+        }
+        .smart-extinguisher-wide-cover img {
+            width: 100%;
+            height: clamp(12rem, 42vw, 26rem);
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            background: transparent;
+        }
+        @media (max-width: 900px) {
+            .smart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 560px) {
+            .smart-grid { grid-template-columns: 1fr; }
+            .smart-amfe-extra { grid-template-columns: 1fr; }
+            .smart-amfe-videos { grid-template-columns: 1fr; }
+        }
+        .smart-page-footnote {
+            flex-shrink: 0;
+            width: 100%;
+            max-width: min(72rem, 100%);
+            text-align: center;
+            padding: 1.25rem 1rem 1.75rem;
+            margin: 0 auto;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .smart-page-footnote p {
+            margin: 0;
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.5;
+        }
+        /* extinguisher-text: copy directly under header image */
+        .smart-extinguisher-text-below {
+            width: min(22rem, 92vw);
+            max-width: 100%;
+            margin: -0.35rem 0 0;
+            padding: 0 0.35rem;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .smart-extinguisher-text-below__title {
+            margin: 0 0 0.65rem;
+            font-size: clamp(1rem, 2.6vw, 1.2rem);
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            line-height: 1.35;
+            color: rgba(255, 248, 242, 0.98);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+        }
+        .smart-extinguisher-text-below__body {
+            margin: 0;
+            font-size: clamp(0.88rem, 2.1vw, 0.98rem);
+            font-weight: 500;
+            line-height: 1.55;
+            letter-spacing: 0.02em;
+            color: rgba(255, 235, 224, 0.94);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+        }
+    </style>
+</head>
+<body>
+    <a href="fire-solutions.html" class="smart-gallery-back" id="smartGalleryBack" aria-label="Back to Fire Solutions">← Back</a>
+    <main class="smart-page">
+        <figure class="top-picked">
+            <img id="pickedTopImage" src="images/extinguishers/extinguisher-text.png" alt="Selected extinguisher image">
+        </figure>
+
+        <div id="extinguisherTextIntro" class="smart-extinguisher-text-below" hidden aria-label="Automatic extinguisher product information">
+            <h2 class="smart-extinguisher-text-below__title">9.0kg Automatic Ext 67 Degree</h2>
+            <p class="smart-extinguisher-text-below__body">FlameStop Automatic Extinguishers work using a specially modified sprinkler valve which bursts at 67°C. Ideally placed above flammable liquid bays or dangerous goods areas.</p>
+        </div>
+        <div id="amfeTextIntro" class="smart-extinguisher-text-below" hidden aria-label="Automatic miniature fire extinguishing unit information">
+            <h2 class="smart-extinguisher-text-below__title">AMFE</h2>
+            <p class="smart-extinguisher-text-below__body"><strong>Automatic miniature fire extinguishing unit</strong></p>
+            <p class="smart-extinguisher-text-below__body">The AMFE automatically detects fires in control cabinets and electrical devices. The system prevents the spread of fire and further property damage. JOB's AMFE protects devices and systems in industry-, household- and consumer electronics. (E.g. control cabinets, household appliances, monitors.)</p>
+        </div>
+        <section id="amfeExtraImages" class="smart-amfe-extra" hidden aria-label="Additional AMFE images">
+            <figure class="smart-grid-item">
+                <img src="images/amfes/afme1.jpeg" alt="AMFE product image 1" decoding="async" loading="lazy">
+            </figure>
+            <figure class="smart-grid-item">
+                <img src="images/amfes/afme2.jpeg" alt="AMFE product image 2" decoding="async" loading="lazy">
+            </figure>
+        </section>
+        <section id="amfeExtraNotes" class="smart-amfe-notes" hidden aria-label="AMFE technical notes">
+            <h3>AMFE: Thermal release</h3>
+            <p>The AMFE is installed purely passively directly in a box or cabinet to be protected. It is installed in such a way that it reliably detects an increase in temperature in the closed area, triggered by a fire, and triggers the extinguishing process when the selected trigger temperature is exceeded. This allows the non-conductive, non-toxic, and residue-free extinguishing agent to flow out.</p>
+            <h3>R-AMFE (Remote AMFE): Monitoring &amp; remote activation</h3>
+            <p>In the event of thermal activation, an external signal current running via the S-AMFE is interrupted because the glass ampoule bursts, and the activation is reported. A connected relay or controller recognises this and opens the power contacts, for example. As a result, the power to the device is switched off and reignition is prevented.</p>
+            <h3>R-AMFE (Remote AMFE): Monitoring &amp; remote activation</h3>
+            <p>The R-AMFE can be triggered using an external activation current. The ampoule inside is specifically overheated and bursts when the activation temperature is reached. In addition to this electrical triggering, the R-AMFE can also trigger purely thermally.</p>
+            <h3>How do you choose the right activation temperature?</h3>
+            <p><strong>Ampullen F AMFE</strong></p>
+            <p>Depending on the expected temperature inside the housing to be protected, the trigger temperature is chosen. JOB offers four different trigger temperatures as standard. If other triggering temperatures are of interest, please contact us. Individual release temperatures are possible with appropriate purchase quantities. When retrofitting, we recommend a temperature measurement in normal operation (or thermography measurement) and a safety margin of approx. 20 Kelvin to prevent possible early triggering in special temperature conditions (sunlight in summer).</p>
+        </section>
+        <section id="amfeExtraVideos" class="smart-amfe-videos" hidden aria-label="AMFE videos">
+            <figure class="smart-amfe-video-item">
+                <video autoplay muted loop playsinline preload="metadata">
+                    <source src="images/amfes/afmevid.mp4" type="video/mp4">
+                </video>
+            </figure>
+            <figure class="smart-amfe-video-item">
+                <video autoplay muted loop playsinline preload="metadata">
+                    <source src="images/amfes/afdmevid2.mp4" type="video/mp4">
+                </video>
+            </figure>
+        </section>
+
+        <section id="smartGrid" class="smart-grid" aria-label="Smart image gallery"></section>
+
+        <figure id="extinguisherDetailsBand" class="smart-extinguisher-details" hidden aria-label="Extinguisher product details">
+            <img id="extinguisherDetailsImg" src="" alt="Extinguisher specifications and product details" decoding="async" loading="lazy">
+        </figure>
+
+        <figure id="extinguisher1FireballBand" class="smart-extinguisher-wide-cover" hidden aria-label="Extinguisher supplementary image">
+            <img id="extinguisher1FireballImg" src="" alt="Fire safety product imagery" decoding="async" loading="lazy">
+        </figure>
+
+    </main>
+
+    <footer class="smart-page-footnote" aria-label="Copyright and developer credit">
+        <p>&copy; 2026 Robur Mining Solutions. All rights reserved. Developed by Crossbow Digital.</p>
+    </footer>
+
+    <script>
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var topImage = params.get('top');
+            var topEl = document.getElementById('pickedTopImage');
+            var grid = document.getElementById('smartGrid');
+            var backEl = document.getElementById('smartGalleryBack');
+            if (topImage && topEl) {
+                topEl.src = topImage;
+            }
+            if (backEl) {
+                var t = (topImage || "").toLowerCase();
+                if (t.indexOf("extinguishers") !== -1) {
+                    backEl.href = "fire-solutions.html#extinguishers";
+                } else if (t.indexOf("/hydrants/") !== -1 || t.indexOf("hydrants/") !== -1) {
+                    backEl.href = "fire-solutions.html#fire-hydrants";
+                } else if (t.indexOf("smart-alarm") !== -1 || t.indexOf("smart_alarm") !== -1) {
+                    backEl.href = "fire-solutions.html#smart-alarm-systems";
+                } else {
+                    backEl.href = "fire-solutions.html";
+                }
+            }
+
+            var gridExtensions = ["webp", "jpeg", "jpg"];
+            var sourceDirs = ["images/smart-alarm", "images/smart"];
+
+            function pathKey(src) {
+                try {
+                    var p = new URL(src, window.location.href).pathname;
+                    return p.replace(/\/+/g, "/").toLowerCase();
+                } catch (err) {
+                    return (src || "").replace(/\\/g, "/").toLowerCase();
+                }
+            }
+
+            function tryLoadImage(url) {
+                return new Promise(function (resolve) {
+                    var img = new Image();
+                    img.onload = function () { resolve(url); };
+                    img.onerror = function () { resolve(null); };
+                    img.src = url;
+                });
+            }
+
+            async function resolveSmartImage(baseName) {
+                var baseNames = [
+                    baseName,
+                    baseName.replace("smart", "smart-"),
+                    baseName.replace("smart", "smart_"),
+                    baseName.replace("smart", "smart "),
+                    baseName.replace("smart", "smart(") + ")"
+                ];
+                for (var d = 0; d < sourceDirs.length; d += 1) {
+                    for (var b = 0; b < baseNames.length; b += 1) {
+                        for (var e = 0; e < gridExtensions.length; e += 1) {
+                            var candidate = sourceDirs[d] + "/" + baseNames[b] + "." + gridExtensions[e];
+                            var hit = await tryLoadImage(candidate);
+                            if (hit) return hit;
+                        }
+                    }
+                }
+                return null;
+            }
+
+            /* Extinguisher photos originally supplied from Downloads (repo paths) */
+            var extinguisherDownloadsRel = [
+                "images/extinguishers/exting.jpeg",
+                "images/extinguishers/exting1.jpeg",
+                "images/extinguishers/exting2.jpeg",
+                "images/extinguishers/exting3.jpeg",
+                "images/extinguishers/exting4.jpeg"
+            ];
+
+            async function buildExtinguisherDownloadsGrid() {
+                if (!grid) return;
+                grid.setAttribute("aria-label", "Additional extinguisher images");
+                var heroKey = topEl && topEl.src ? pathKey(topEl.src) : "";
+                var added = 0;
+                for (var i = 0; i < extinguisherDownloadsRel.length; i += 1) {
+                    var rel = extinguisherDownloadsRel[i];
+                    var pk = pathKey(rel);
+                    if (heroKey && pk === heroKey) {
+                        continue;
+                    }
+                    var hit = await tryLoadImage(rel);
+                    if (!hit) {
+                        continue;
+                    }
+                    var figure = document.createElement("figure");
+                    figure.className = "smart-grid-item";
+                    var img = document.createElement("img");
+                    img.src = hit;
+                    img.alt = "Extinguisher image " + (added + 1);
+                    img.loading = "lazy";
+                    figure.appendChild(img);
+                    grid.appendChild(figure);
+                    added += 1;
+                }
+                if (added === 0) {
+                    var empty = document.createElement("p");
+                    empty.className = "smart-empty";
+                    empty.textContent = "No additional extinguisher images were found below the header.";
+                    grid.replaceWith(empty);
+                }
+                var detailRel = "images/extinguishers/exting-details.jpeg";
+                var band = document.getElementById("extinguisherDetailsBand");
+                var bandImg = document.getElementById("extinguisherDetailsImg");
+                if (band && bandImg) {
+                    var detailHit = await tryLoadImage(detailRel);
+                    if (detailHit) {
+                        bandImg.src = detailHit;
+                        band.removeAttribute("hidden");
+                    }
+                }
+            }
+
+            var hydrantExtrasRel = [
+                "images/hydrants/hyd.jpeg"
+            ];
+
+            async function buildHydrantExtraGrid() {
+                var band = document.getElementById("extinguisherDetailsBand");
+                if (band) band.remove();
+                if (!grid) return;
+                grid.classList.add("smart-grid--center-below-header");
+                grid.setAttribute("aria-label", "Additional hydrant images");
+                var heroKey = topEl && topEl.src ? pathKey(topEl.src) : "";
+                var added = 0;
+                for (var h = 0; h < hydrantExtrasRel.length; h += 1) {
+                    var hrel = hydrantExtrasRel[h];
+                    var hpk = pathKey(hrel);
+                    if (heroKey && hpk === heroKey) {
+                        continue;
+                    }
+                    var hhit = await tryLoadImage(hrel);
+                    if (!hhit) {
+                        continue;
+                    }
+                    var hfigure = document.createElement("figure");
+                    hfigure.className = "smart-grid-item";
+                    var himg = document.createElement("img");
+                    himg.src = hhit;
+                    himg.alt = "Hydrant image " + (added + 1);
+                    himg.loading = "lazy";
+                    hfigure.appendChild(himg);
+                    grid.appendChild(hfigure);
+                    added += 1;
+                }
+                if (added === 0) {
+                    var hempty = document.createElement("p");
+                    hempty.className = "smart-empty";
+                    hempty.textContent = "No additional hydrant images were found below the header.";
+                    grid.replaceWith(hempty);
+                }
+            }
+
+            async function setupExtinguisher1Fireball() {
+                var wrap = document.getElementById("extinguisher1FireballBand");
+                var fbImg = document.getElementById("extinguisher1FireballImg");
+                if (!wrap || !fbImg) return;
+                var rel = "images/extinguishers/fireball.jpeg";
+                var hit = await tryLoadImage(rel);
+                if (!hit) return;
+                fbImg.src = hit;
+                wrap.removeAttribute("hidden");
+            }
+
+            var smartAlarmFireRel = [
+                "images/smart-alarm/fire1.jpeg",
+                "images/smart-alarm/fire2.jpeg",
+                "images/smart-alarm/fire3.jpeg"
+            ];
+
+            async function buildSmartAlarmFireGrid() {
+                var amfeText = document.getElementById("amfeTextIntro");
+                if (amfeText) amfeText.setAttribute("hidden", "");
+                var amfeExtra = document.getElementById("amfeExtraImages");
+                if (amfeExtra) amfeExtra.setAttribute("hidden", "");
+                var amfeNotes = document.getElementById("amfeExtraNotes");
+                if (amfeNotes) amfeNotes.setAttribute("hidden", "");
+                var amfeVideos = document.getElementById("amfeExtraVideos");
+                if (amfeVideos) amfeVideos.setAttribute("hidden", "");
+                var band = document.getElementById("extinguisherDetailsBand");
+                if (band) band.remove();
+                var fireballBand = document.getElementById("extinguisher1FireballBand");
+                if (fireballBand) fireballBand.remove();
+                if (grid) grid.remove();
+            }
+
+            function buildCandidateNames() {
+                var list = [];
+                var seen = Object.create(null);
+
+                function pushUnique(name) {
+                    if (!name || seen[name]) return;
+                    seen[name] = true;
+                    list.push(name);
+                }
+
+                // Exact names requested by user
+                pushUnique("smart");
+                for (var i = 1; i <= 12; i += 1) {
+                    pushUnique("smart" + i);
+                    pushUnique("smart alarm" + i);
+                }
+                pushUnique("smart alarm");
+
+                // Common variants to auto-include all available smart assets
+                for (var j = 1; j <= 40; j += 1) {
+                    pushUnique("smart" + j);
+                    pushUnique("smart-" + j);
+                    pushUnique("smart_" + j);
+                    pushUnique("smart " + j);
+                    pushUnique("smart-alarm-systems" + j);
+                    pushUnique("smart_alarm_systems" + j);
+                }
+                pushUnique("smart-alarm-systems");
+                pushUnique("smart_alarm_systems");
+
+                return list;
+            }
+
+            async function buildSmartGrid() {
+                var tl = (topImage || "").toLowerCase();
+                var defaultIntro = document.getElementById("extinguisherTextIntro");
+                if (defaultIntro) defaultIntro.setAttribute("hidden", "");
+                var amfeTextDefault = document.getElementById("amfeTextIntro");
+                if (amfeTextDefault) amfeTextDefault.setAttribute("hidden", "");
+                var amfeExtraDefault = document.getElementById("amfeExtraImages");
+                if (amfeExtraDefault) amfeExtraDefault.setAttribute("hidden", "");
+                var amfeNotesDefault = document.getElementById("amfeExtraNotes");
+                if (amfeNotesDefault) amfeNotesDefault.setAttribute("hidden", "");
+                var amfeVideosDefault = document.getElementById("amfeExtraVideos");
+                if (amfeVideosDefault) amfeVideosDefault.setAttribute("hidden", "");
+                /* AMFEs deep links: header only */
+                if (tl.indexOf("/amfes/") !== -1 || tl.indexOf("amfes/") !== -1 || tl.indexOf("afmes") !== -1) {
+                    if (grid) grid.remove();
+                    var amfeBand = document.getElementById("extinguisherDetailsBand");
+                    if (amfeBand) amfeBand.remove();
+                    var amfeFireball = document.getElementById("extinguisher1FireballBand");
+                    if (amfeFireball) amfeFireball.remove();
+                    var amfeIntro = document.getElementById("extinguisherTextIntro");
+                    if (amfeIntro) amfeIntro.remove();
+                    var amfeText = document.getElementById("amfeTextIntro");
+                    if (amfeText) amfeText.removeAttribute("hidden");
+                    var amfeExtra = document.getElementById("amfeExtraImages");
+                    if (amfeExtra) amfeExtra.removeAttribute("hidden");
+                    var amfeNotes = document.getElementById("amfeExtraNotes");
+                    if (amfeNotes) amfeNotes.removeAttribute("hidden");
+                    var amfeVideos = document.getElementById("amfeExtraVideos");
+                    if (amfeVideos) amfeVideos.removeAttribute("hidden");
+                    return;
+                }
+                /* Smart alarm deep links: header only */
+                if (tl.indexOf("smart-alarm") !== -1 || tl.indexOf("smart_alarm") !== -1) {
+                    await buildSmartAlarmFireGrid();
+                    return;
+                }
+                /* extinguisher-text.png: header only */
+                if (tl.indexOf("extinguisher-text") !== -1) {
+                    if (grid) grid.remove();
+                    var bandText = document.getElementById("extinguisherDetailsBand");
+                    if (bandText) bandText.remove();
+                    var fbHidden = document.getElementById("extinguisher1FireballBand");
+                    if (fbHidden) fbHidden.remove();
+                    var textIntro = document.getElementById("extinguisherTextIntro");
+                    if (textIntro) textIntro.removeAttribute("hidden");
+                    return;
+                }
+                /* extinguisher1.jpeg: header + full-width fireball strip */
+                if (tl.indexOf("extinguisher1.jpeg") !== -1) {
+                    if (grid) grid.remove();
+                    var band1 = document.getElementById("extinguisherDetailsBand");
+                    if (band1) band1.remove();
+                    await setupExtinguisher1Fireball();
+                    return;
+                }
+                /* Hydrant gallery: header + hyd.jpeg (and any future extras) */
+                if (tl.indexOf("/hydrants/") !== -1 || tl.indexOf("hydrants/") !== -1) {
+                    await buildHydrantExtraGrid();
+                    return;
+                }
+                if (!grid) return;
+                /* Extinguisher deep links: header + Downloads extinguisher set below */
+                if (tl.indexOf("extinguishers") !== -1) {
+                    await buildExtinguisherDownloadsGrid();
+                    return;
+                }
+                var added = 0;
+                var listPosition = 0;
+                var seenPath = Object.create(null);
+                var candidates = buildCandidateNames();
+                var heroKey = topEl && topEl.src ? pathKey(topEl.src) : "";
+                var heroIsExtinguisher =
+                    (topImage && topImage.toLowerCase().indexOf("extinguisher") !== -1) ||
+                    (heroKey && heroKey.indexOf("extinguisher") !== -1);
+                var useCustomRemovals =
+                    (topImage && topImage.toLowerCase().indexOf("smart-alarm-systems.jpeg") !== -1) ||
+                    (heroKey && heroKey.indexOf("/images/smart-alarm/smart-alarm-systems.jpeg") !== -1);
+                var removedPositions = {
+                    1: true,
+                    2: true,
+                    4: true,
+                    6: true,
+                    8: true,
+                    10: true,
+                    13: true,
+                    14: true,
+                    15: true,
+                    16: true
+                };
+
+                for (var i = 0; i < candidates.length; i += 1) {
+                    var cand = candidates[i];
+                    if (heroIsExtinguisher && cand === "smart") {
+                        continue;
+                    }
+                    var src = await resolveSmartImage(cand);
+                    if (!src) {
+                        continue;
+                    }
+                    var pk = pathKey(src);
+                    if (heroKey && pk === heroKey) continue;
+                    if (seenPath[pk]) continue;
+                    seenPath[pk] = true;
+                    listPosition += 1;
+                    if (useCustomRemovals && removedPositions[listPosition]) continue;
+
+                    var figure = document.createElement("figure");
+                    figure.className = "smart-grid-item";
+
+                    var img = document.createElement("img");
+                    img.src = src;
+                    img.alt = "Smart image " + (i + 1);
+                    img.loading = "lazy";
+
+                    figure.appendChild(img);
+                    grid.appendChild(figure);
+                    added += 1;
+                }
+
+                if (added === 0) {
+                    var empty = document.createElement("p");
+                    empty.className = "smart-empty";
+                    empty.textContent = "No .webp smart images were found in images/smart-alarm or images/smart.";
+                    grid.replaceWith(empty);
+                }
+            }
+
+            buildSmartGrid().catch(function () {});
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Robur Drilling Tools, precision drilling equipment, consumables and technical support engineered for Zimbabwe's surface and underground mining operations.">
+    <title>Drilling Tools, Robur Mining Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="images/drilling-page-logo.jpeg" as="image">
+    <link rel="preload" href="images/drilling-hero-full.jpeg" as="image">
+    <link rel="preload" href="Bagerich/Bagerich-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="web-styles.css">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+    <style>
+        :root {
+            /*
+             * Body + hero tile = exact letterbox orange from images/drilling-hero-full.jpeg (#e07b2d via --theme-primary).
+             * No darkening on page fill so the UI matches the photo pixels behind object-fit: contain.
+             */
+            --drill-theme: var(--theme-primary);
+            --drill-theme-rgb: var(--theme-primary-rgb);
+            --drill-bg-page: var(--drill-theme);
+            --drill-outer: var(--drill-bg-page);
+            --drill-hero-letterbox: var(--drill-bg-page);
+            --drill-header-footer: color-mix(in srgb, var(--drill-theme) 32%, black 68%);
+            --drill-stretch-gap: clamp(0.65rem, 2.2vw, 1.05rem);
+            --drill-header-measured-px: 5.75rem;
+            --drill-bar-pad-bottom: 0.35rem;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            margin: 0;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        html, body {
+            margin: 0;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        body.drill-radial-theme {
+            --bg: var(--drill-outer);
+            --text-main: color-mix(in srgb, var(--drill-theme) 4%, white 96%);
+            --text-muted: color-mix(in srgb, var(--drill-theme) 14%, white 86%);
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background: var(--drill-theme);
+            color: var(--text-main);
+            font-family: var(--font-default);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .drill-theme-shell {
+            /* Do not grow past content, flex-grow was leaving orange dead space above the footer. */
+            flex: 0 1 auto;
+            width: 100%;
+            min-height: 0;
+            position: relative;
+            isolation: isolate;
+            overflow: visible;
+            background-color: var(--drill-bg-page);
+        }
+
+        /* No shell overlay, any veil shifts sRGB away from the hero JPEG letterbox (#e07b2d). */
+        .drill-theme-shell::after {
+            display: none;
+        }
+
+        /* Single primary column: hero + category stack share one rail width */
+        .drill-page-main {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: min(72rem, 100%);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            row-gap: clamp(1.5rem, 4vw, 2.75rem);
+            box-sizing: border-box;
+            background: var(--drill-outer);
+        }
+
+        /*
+         * First screen: hero fills viewport (below fixed bar); image tile centered.
+         * JS sets padding-top on this section. Category sections follow on scroll.
+         */
+        body.drill-radial-theme .drill-theme-shell .drill-hero-center {
+            position: relative;
+            z-index: 2;
+            isolation: isolate;
+            box-sizing: border-box;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+            background: var(--drill-hero-letterbox);
+            padding: var(--drill-header-measured-px, 5.75rem) 0 clamp(1.25rem, 3vh, 2rem);
+            pointer-events: auto;
+            overflow-x: hidden;
+            overflow-y: visible;
+            border-bottom: none;
+            box-shadow: none;
+        }
+
+        /* Soft blend from fixed header (#d25711) into dark hero, header fill stays literal on .drill-top-bar only */
+        body.drill-radial-theme .drill-theme-shell .drill-hero-center::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: clamp(2.75rem, 10vmin, 5rem);
+            pointer-events: none;
+            z-index: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(210, 87, 17, 0.35) 0%,
+                rgba(var(--theme-primary-rgb), 0.12) 40%,
+                transparent 100%
+            );
+        }
+
+        .drill-sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip-path: inset(50%);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .drill-hero-gallery,
+        .drill-cat-gallery {
+            --drill-hero-gallery-gap: clamp(0.65rem, 1.75vw, 1.15rem);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--drill-hero-gallery-gap);
+            width: 100%;
+            margin: 0;
+            padding: 0 clamp(0.75rem, 3vw, 1.5rem);
+            padding-left: max(clamp(0.75rem, 3vw, 1.5rem), env(safe-area-inset-left, 0px));
+            padding-right: max(clamp(0.75rem, 3vw, 1.5rem), calc(env(safe-area-inset-right, 0px) + 3.5rem));
+            box-sizing: border-box;
+        }
+
+        .drill-hero-gallery {
+            position: relative;
+            z-index: 1;
+            flex: 0 1 auto;
+            align-self: stretch;
+            margin-top: 0;
+        }
+
+        .drill-cat-gallery {
+            margin-top: clamp(0.25rem, 0.8vw, 0.5rem);
+        }
+
+        .drill-hero-figure,
+        .drill-cat-figure {
+            margin: 0;
+            overflow: hidden;
+            line-height: 0;
+            min-width: 0;
+            min-height: 0;
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        /* Hero stays wide; category strip uses portrait slots so portrait assets fill width with contain (no crop). */
+        .drill-hero-figure {
+            aspect-ratio: 16 / 9;
+            background: var(--drill-hero-letterbox);
+            max-height: min(70vh, calc(100dvh - 10rem));
+            transform: translateZ(0);
+            animation: drill-hero-float 5.5s ease-in-out infinite;
+        }
+
+        /* 3:4 matches tapered / DTH / pneumatic portrait files; landscape (Top Hammer) letterboxes, same tile size for all. */
+        .drill-cat-figure {
+            aspect-ratio: 3 / 4;
+            width: 100%;
+            background: var(--drill-hero-letterbox);
+        }
+
+        @keyframes drill-hero-float {
+            0%, 100% {
+                transform: translate3d(0, 0, 0);
+                box-shadow: none;
+            }
+            50% {
+                transform: translate3d(0, -10px, 0);
+                box-shadow: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .drill-hero-figure {
+                animation: none;
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        body.drill-radial-theme .drill-hero-figure .drill-tile-img,
+        body.drill-radial-theme .drill-cat-figure .drill-tile-img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+            object-fit: contain;
+            object-position: center;
+            margin: 0;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            border-radius: 0 !important;
+            transform: none;
+            transform-origin: center center;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        /* Category stack: rhythm + panels aligned to page rail */
+        .drill-cat-page {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            margin: 0;
+            padding: clamp(0.35rem, 1.5vw, 0.85rem) 0 clamp(0.2rem, 0.9vw, 0.45rem);
+            box-sizing: border-box;
+            background: var(--drill-outer);
+        }
+
+        .drill-cat-stack {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.85rem, 2.2vw, 1.5rem);
+            width: 100%;
+        }
+
+        .drill-cat-section {
+            scroll-margin-top: clamp(5.5rem, 14vw, 8.75rem);
+            margin: 0;
+            padding: clamp(0.75rem, 2vw, 1.1rem) max(clamp(0.75rem, 3vw, 1.5rem), env(safe-area-inset-left, 0px))
+                clamp(0.85rem, 2.4vw, 1.35rem)
+                max(clamp(0.75rem, 3vw, 1.5rem), calc(env(safe-area-inset-right, 0px) + 3.5rem));
+            border-radius: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .drill-cat-section h2 {
+            position: relative;
+            margin: 0 0 0;
+            padding: 0 0 0.42rem;
+            font-size: clamp(1.45rem, 4.1vw, 2.1rem);
+            font-weight: 700;
+            line-height: 1.15;
+            text-align: center;
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+        }
+
+        .drill-cat-section h2::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0.08rem;
+            transform: translateX(-50%);
+            width: min(5rem, 40vw);
+            height: 2px;
+            border-radius: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                rgba(255, 255, 255, 0.55),
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+        }
+
+        .drill-cat-section .drill-cat-gallery {
+            margin-top: clamp(0.1rem, 0.45vw, 0.28rem);
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        /* Top Hammer: landscape in a 3:4 slot, crop (cover) fills the tile so orange letterbox is gone. */
+        #drill-section-top-hammer .drill-cat-figure .drill-tile-img {
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        /* Services: intrinsic-height tile (no forced 3:4) so layout ends where the bitmap ends and the footer can sit flush. */
+        #drill-section-services .drill-cat-figure {
+            align-items: flex-start;
+            justify-content: flex-start;
+            aspect-ratio: auto;
+            width: 100%;
+            height: auto;
+            min-height: 0;
+            background: transparent;
+        }
+
+        #drill-section-services .drill-cat-figure .drill-tile-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            object-position: top center;
+        }
+
+        #drill-section-services .drill-cat-gallery {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        #drill-section-services.drill-cat-section {
+            padding-bottom: max(0px, env(safe-area-inset-bottom, 0px));
+        }
+
+        /* No extra orange rail after the last category, footer follows the Services image bottom. */
+        body.drill-radial-theme .drill-theme-shell .drill-cat-page {
+            padding-bottom: max(0px, env(safe-area-inset-bottom, 0px));
+        }
+
+        /* Tapered tile hidden: less dead air before Top Hammer. */
+        #drill-section-tapered.drill-tapered-pending {
+            padding-bottom: 0.35rem;
+        }
+
+        #drill-section-tapered.drill-tapered-pending + #drill-section-top-hammer {
+            padding-top: 0.45rem;
+        }
+
+        /* Tapered image deferred until scroll / in-page nav (see inline script) */
+        #drill-section-tapered.drill-tapered-pending .drill-cat-gallery {
+            display: none;
+        }
+
+        /* Fixed header: logo + Home + category menu
+         * Header fill is intentionally a literal hex, do not replace with theme/mix variables.
+         * #d25711 matches the plate in images/drilling-page-logo.jpeg (sampled); changing theme tokens must not change this bar. */
+        .drill-top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding:
+                max(1rem, env(safe-area-inset-top, 0px))
+                max(1rem, env(safe-area-inset-right, 0px))
+                var(--drill-bar-pad-bottom)
+                max(1rem, env(safe-area-inset-left, 0px));
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+            align-items: center;
+            column-gap: 1rem;
+            row-gap: 0.75rem;
+            background: #d25711;
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.08),
+                0 20px 40px -14px rgba(0, 0, 0, 0.35);
+            pointer-events: none;
+        }
+
+        .drill-top-bar > * {
+            pointer-events: auto;
+        }
+
+        .drill-top-bar-lead {
+            grid-column: 1;
+            justify-self: start;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            min-width: 0;
+        }
+
+        .drill-nav {
+            grid-column: 2;
+            justify-self: stretch;
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-evenly;
+            column-gap: 0;
+            row-gap: var(--drill-stretch-gap);
+        }
+
+        .drill-top-bar-end {
+            grid-column: 3;
+            min-width: 0;
+            pointer-events: none;
+        }
+
+        @media (max-width: 54rem) {
+            .drill-top-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .drill-top-bar-lead {
+                grid-column: 1;
+            }
+
+            .drill-nav {
+                grid-column: 1;
+            }
+
+            .drill-top-bar-end {
+                display: none;
+            }
+        }
+
+        @media (max-width: 36rem) {
+            .drill-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                row-gap: var(--drill-stretch-gap);
+                column-gap: var(--drill-stretch-gap);
+            }
+
+            .drill-nav-link {
+                flex-shrink: 0;
+                white-space: normal;
+                text-align: center;
+                max-width: 100%;
+            }
+        }
+
+        .drill-nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.42rem 0.72rem;
+            border-radius: 999px;
+            font-size: clamp(0.7rem, 1.9vw, 0.8125rem);
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            line-height: 1.2;
+            text-align: center;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.95) !important;
+            text-shadow: 0 1px 2px rgba(var(--drill-theme-rgb), 0.4);
+            background: color-mix(in srgb, var(--drill-theme) 22%, transparent);
+            border: 1px solid color-mix(in srgb, var(--drill-theme) 42%, white 58%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 12px rgba(var(--drill-theme-rgb), 0.22);
+            transition: background 0.2s ease, border-color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .drill-nav-link:hover {
+            background: color-mix(in srgb, var(--drill-theme) 38%, transparent);
+            border-color: color-mix(in srgb, var(--drill-theme) 55%, white 45%);
+        }
+
+        .drill-nav-link:focus-visible {
+            outline: 2px solid color-mix(in srgb, var(--drill-theme) 12%, white 88%);
+            outline-offset: 2px;
+        }
+
+        .drill-floating-home {
+            position: static;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: rgba(255, 255, 255, 0.96) !important;
+            text-decoration: none;
+            text-shadow: 0 1px 2px rgba(var(--drill-theme-rgb), 0.4);
+            background: color-mix(in srgb, var(--drill-theme) 28%, transparent);
+            border: 1px solid color-mix(in srgb, var(--drill-theme) 48%, white 52%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(var(--drill-theme-rgb), 0.22);
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .drill-floating-home:hover {
+            background: color-mix(in srgb, var(--drill-theme) 42%, transparent);
+            border-color: color-mix(in srgb, var(--drill-theme) 58%, white 42%);
+        }
+
+        .drill-logo-link {
+            display: inline-flex;
+            align-items: center;
+            flex-shrink: 0;
+            line-height: 0;
+            text-decoration: none;
+            padding: 0;
+            border: none;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .drill-logo-link:focus-visible {
+            outline: 2px solid color-mix(in srgb, var(--drill-theme) 12%, white 88%);
+            outline-offset: 4px;
+            border-radius: 6px;
+        }
+
+        .drill-logo-img {
+            height: clamp(2.45rem, 8.5vw, 3.35rem);
+            width: auto;
+            max-width: min(280px, 62vw);
+            object-fit: contain;
+            display: block;
+        }
+
+        .drill-social-rail {
+            position: fixed;
+            top: 50%;
+            bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+            right: max(0.65rem, env(safe-area-inset-right, 0px));
+            z-index: 95;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: stretch;
+            min-height: 0;
+            pointer-events: none;
+        }
+
+        .drill-social-rail .drill-social-link {
+            pointer-events: auto;
+        }
+
+        .drill-social-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex: 1;
+            min-height: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 0;
+        }
+
+        .drill-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(3.25rem, 5.5vw, 3.65rem);
+            height: clamp(3.35rem, 5.75vw, 3.85rem);
+            min-height: 3.35rem;
+            border-radius: 50%;
+            color: rgba(255, 255, 255, 0.96) !important;
+            text-decoration: none;
+            background: color-mix(in srgb, var(--drill-theme) 22%, transparent);
+            border: 1px solid color-mix(in srgb, var(--drill-theme) 42%, white 58%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 14px rgba(var(--drill-theme-rgb), 0.22);
+            transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .drill-social-link:hover {
+            background: color-mix(in srgb, var(--drill-theme) 38%, transparent);
+            border-color: color-mix(in srgb, var(--drill-theme) 55%, white 45%);
+            transform: scale(1.06);
+        }
+
+        .drill-social-link:focus-visible {
+            outline: 2px solid color-mix(in srgb, var(--drill-theme) 12%, white 88%);
+            outline-offset: 3px;
+        }
+
+        .drill-social-icon {
+            width: clamp(1.2rem, 2.4vw, 1.4rem);
+            height: clamp(1.2rem, 2.4vw, 1.4rem);
+            flex-shrink: 0;
+        }
+
+        body.drill-radial-theme .drill-theme-shell .main-footer {
+            flex-shrink: 0;
+            width: 100%;
+            margin-top: 0;
+            position: relative;
+            isolation: isolate;
+            border-top: none;
+            padding: 0 0 max(0.35rem, env(safe-area-inset-bottom, 0px)) 0;
+            /* Solid bar, stacked gradients read as extra orange above the footer. */
+            background: var(--drill-header-footer) !important;
+        }
+
+        body.drill-radial-theme .main-footer,
+        body.drill-radial-theme .main-footer p,
+        body.drill-radial-theme .main-footer .developer-credit,
+        body.drill-radial-theme .main-footer a,
+        body.drill-radial-theme .main-footer .container,
+        body.drill-radial-theme .main-footer .footer-content {
+            color: color-mix(in srgb, var(--drill-theme) 8%, white 92%) !important;
+            text-shadow: none !important;
+        }
+
+        body.drill-radial-theme .main-footer .footer-copyright {
+            opacity: 1;
+        }
+
+        body.drill-radial-theme .main-footer .footer-copyright p,
+        body.drill-radial-theme .main-footer .developer-credit {
+            margin: 0.08rem 0;
+            line-height: 1.2;
+        }
+
+        body.drill-radial-theme .main-footer .footer-copyright p {
+            font-size: clamp(0.72rem, 2.4vw, 0.8rem);
+        }
+
+        body.drill-radial-theme .main-footer .developer-credit {
+            opacity: 0.85;
+            font-size: clamp(0.65rem, 2.1vw, 0.72rem);
+        }
+
+        @media print {
+            .drill-social-rail {
+                display: none !important;
+            }
+
+            html,
+            body.drill-radial-theme {
+                overflow: visible !important;
+                height: auto !important;
+                min-height: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="drill-radial-theme">
+    <div class="drill-top-bar">
+        <div class="drill-top-bar-lead">
+            <a href="index.html" class="drill-logo-link division-back" aria-label="Robur Mining Solutions, home">
+                <img src="images/drilling-page-logo.jpeg" alt="Robur Mining Solutions" class="drill-logo-img" decoding="async">
+            </a>
+            <a href="index.html" class="drill-floating-home division-back" aria-label="Back to home">← Home</a>
+        </div>
+        <nav class="drill-nav" aria-label="Drilling tools categories">
+            <a class="drill-nav-link" href="#drill-section-tapered">Tapered</a>
+            <a class="drill-nav-link" href="#drill-section-top-hammer">Top Hammer</a>
+            <a class="drill-nav-link" href="#drill-section-dth">(DTH) Down The Hole</a>
+            <a class="drill-nav-link" href="#drill-section-pneumatic">Pneumatic Rockdrills</a>
+            <a class="drill-nav-link" href="#drill-section-services">Services</a>
+        </nav>
+        <div class="drill-top-bar-end" aria-hidden="true"></div>
+    </div>
+    <aside class="drill-social-rail" aria-label="Social media">
+        <ul class="drill-social-list">
+            <li>
+                <a class="drill-social-link" href="https://www.facebook.com/share/1BDQdeGoye/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <svg class="drill-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M24 12.073C24 5.446 18.627 0 12 0S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+            </li>
+            <li>
+                <a class="drill-social-link" href="https://x.com/MiningRobuR" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                    <svg class="drill-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+            </li>
+            <li>
+                <a class="drill-social-link" href="https://www.instagram.com/roburmining/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg class="drill-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.75"/><circle cx="12" cy="12" r="4.25" stroke="currentColor" stroke-width="1.75"/><circle cx="17.5" cy="6.5" r="1.25" fill="currentColor" stroke="none"/></svg>
+                </a>
+            </li>
+            <li>
+                <a class="drill-social-link" href="https://www.linkedin.com/company/roburmining/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg class="drill-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065A2.064 2.064 0 115.337 7.433zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <div class="drill-theme-shell">
+        <main class="drill-page-main" id="drill-page-main" aria-label="Drilling Tools, Robur Mining Solutions">
+            <section class="drill-hero-center" id="drill-hero-center" aria-labelledby="drill-page-title">
+                <h1 id="drill-page-title" class="drill-sr-only">Drilling Tools</h1>
+                <div class="drill-hero-gallery" role="group" aria-label="Drilling tools hero">
+                    <figure class="drill-hero-figure">
+                        <img
+                            src="images/drilling-hero-full.jpeg"
+                            alt="Robur drill bit and tooling"
+                            class="drill-tile-img"
+                            width="672"
+                            height="1536"
+                            decoding="async"
+                            fetchpriority="high"
+                        >
+                    </figure>
+                </div>
+            </section>
+
+            <div class="drill-cat-page" aria-label="Product categories">
+                <div class="drill-cat-stack">
+                    <section id="drill-section-tapered" class="drill-cat-section drill-tapered-pending" aria-labelledby="drill-heading-tapered">
+                        <h2 id="drill-heading-tapered">Tapered</h2>
+                        <div class="drill-cat-gallery" role="group" aria-label="Tapered drilling tools">
+                            <figure class="drill-cat-figure">
+                                <img src="images/tapered.jpeg" alt="Tapered drilling tools" class="drill-tile-img" decoding="async" loading="lazy">
+                            </figure>
+                        </div>
+                    </section>
+                    <section id="drill-section-top-hammer" class="drill-cat-section" aria-labelledby="drill-heading-top-hammer">
+                        <h2 id="drill-heading-top-hammer">Top Hammer</h2>
+                        <div class="drill-cat-gallery" role="group" aria-label="Top hammer drilling tools">
+                            <figure class="drill-cat-figure">
+                                <img src="images/top-hammer.jpeg" alt="Top hammer drilling equipment" class="drill-tile-img" decoding="async" loading="lazy">
+                            </figure>
+                        </div>
+                    </section>
+                    <section id="drill-section-dth" class="drill-cat-section" aria-labelledby="drill-heading-dth">
+                        <h2 id="drill-heading-dth">(DTH) Down The Hole</h2>
+                        <div class="drill-cat-gallery" role="group" aria-label="Down the hole drilling tools">
+                            <figure class="drill-cat-figure">
+                                <img src="images/down-the-hole.jpeg" alt="Down-the-hole drilling tools" class="drill-tile-img" decoding="async" loading="lazy">
+                            </figure>
+                        </div>
+                    </section>
+                    <section id="drill-section-pneumatic" class="drill-cat-section" aria-labelledby="drill-heading-pneumatic">
+                        <h2 id="drill-heading-pneumatic">Pneumatic Rockdrills</h2>
+                        <div class="drill-cat-gallery" role="group" aria-label="Pneumatic rockdrills">
+                            <figure class="drill-cat-figure">
+                                <img src="images/pneumatic-rockdrills.jpeg" alt="Pneumatic rockdrills" class="drill-tile-img" decoding="async" loading="lazy">
+                            </figure>
+                        </div>
+                    </section>
+                    <section id="drill-section-services" class="drill-cat-section" aria-labelledby="drill-heading-services">
+                        <h2 id="drill-heading-services">Services</h2>
+                        <div class="drill-cat-gallery" role="group" aria-label="Drilling services">
+                            <figure class="drill-cat-figure">
+                                <img src="images/services-cover.jpeg" alt="Robur drilling services, sales, support, and services" class="drill-tile-img" decoding="async" loading="lazy">
+                            </figure>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-copyright">
+                        <p>&copy; 2026 Robur Mining Solutions. All rights reserved.</p>
+                        <p class="developer-credit">Developed by Crossbow Digital</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            (function () {
+                var bar = document.querySelector(".drill-top-bar");
+                var hero = document.getElementById("drill-hero-center");
+                function syncDrillHeroPad() {
+                    if (!bar || !hero) return;
+                    var h = bar.getBoundingClientRect().height;
+                    /* padding-top on .drill-hero-center clears fixed bar; keep in sync with bar height */
+                    /* Match bar height with small gap so content clears the fixed header cleanly */
+                    var px = Math.max(48, Math.round(h - 6)) + "px";
+                    hero.style.setProperty("padding-top", px, "important");
+                }
+                var ro;
+                function start() {
+                    syncDrillHeroPad();
+                    requestAnimationFrame(syncDrillHeroPad);
+                    if (typeof ResizeObserver !== "undefined" && !ro) {
+                        ro = new ResizeObserver(syncDrillHeroPad);
+                        ro.observe(bar);
+                    }
+                }
+                syncDrillHeroPad();
+                if (document.readyState === "loading") {
+                    document.addEventListener("DOMContentLoaded", start);
+                } else {
+                    start();
+                }
+                window.addEventListener("resize", syncDrillHeroPad);
+                window.addEventListener("load", syncDrillHeroPad);
+                if (document.fonts && document.fonts.ready) {
+                    document.fonts.ready.then(function () {
+                        requestAnimationFrame(syncDrillHeroPad);
+                    });
+                }
+            })();
+
+            /* Hide Tapered tile on first paint; show after scroll to section or #drill-section-tapered */
+            (function () {
+                var tapered = document.getElementById("drill-section-tapered");
+                if (!tapered) return;
+                function reveal() {
+                    tapered.classList.remove("drill-tapered-pending");
+                }
+                function hashIsTapered() {
+                    return (location.hash || "").replace(/^#/, "") === "drill-section-tapered";
+                }
+                function arm() {
+                    if (hashIsTapered()) {
+                        reveal();
+                        return;
+                    }
+                    window.addEventListener("hashchange", function () {
+                        if (hashIsTapered()) reveal();
+                    });
+                    if (typeof IntersectionObserver !== "undefined") {
+                        var io = new IntersectionObserver(
+                            function (entries) {
+                                entries.forEach(function (e) {
+                                    if (e.isIntersecting) {
+                                        reveal();
+                                        io.disconnect();
+                                    }
+                                });
+                            },
+                            { root: null, rootMargin: "100px 0px 0px 0px", threshold: 0.02 }
+                        );
+                        io.observe(tapered);
+                    } else {
+                        reveal();
+                    }
+                }
+                if (document.readyState === "loading") {
+                    document.addEventListener("DOMContentLoaded", arm);
+                } else {
+                    arm();
+                }
+            })();
+        </script>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

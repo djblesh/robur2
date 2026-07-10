@@ -3118,10 +3118,10 @@ a.contact-link:hover { border-bottom-color: rgba(249,247,248,0.7); opacity: 0.9;
 .doc-side-title {
     font-family: var(--serif);
     font-weight: 400;
-    font-size: clamp(2rem, 3.2vw, 3.2rem);
-    line-height: 1;
-    letter-spacing: -0.02em;
-    margin: clamp(3.5rem, 12vh, 8rem) 0 auto 0;
+    font-size: clamp(2.8rem, 5vw, 5.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    margin: clamp(3rem, 10vh, 7rem) 0 auto 0;
     background-image: linear-gradient(to right, #ffffff 0%, #ffffff 25%, rgba(255,255,255,0.35) 100%);
     -webkit-background-clip: text;
     background-clip: text;

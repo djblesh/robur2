@@ -2748,3 +2748,45 @@ h3, h4, .card-title, .product-title { letter-spacing: -0.02em; }
 @media (max-width: 720px) {
     .about-pillars { grid-template-columns: 1fr; gap: 2.5rem; }
 }
+
+/* ============================================
+   Divisions: drop the card containers — just clickable logos + a title
+   ============================================ */
+#divisions .divisions-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 8vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin: 0 0 clamp(1.5rem, 4vw, 3rem) 0;
+    background-image: linear-gradient(to right, #080808 0%, #080808 20%, rgba(8,8,8,0.35) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+/* No box: transparent card, no shadow, no rounded frame, no white tile */
+#divisions .division-card {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    animation: none !important;
+}
+#divisions .division-card:hover {
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: none;
+}
+#divisions .division-logo-container {
+    background: transparent !important;
+    padding: clamp(0.5rem, 2vw, 1rem) !important;
+}
+/* Logo itself is the clickable target; gentle lift on hover */
+#divisions .division-logo {
+    max-width: 88% !important;
+    max-height: 88% !important;
+    transition: transform 0.3s var(--ease-beginner), opacity 0.3s ease;
+}
+#divisions .division-card:hover .division-logo {
+    transform: scale(1.06);
+}

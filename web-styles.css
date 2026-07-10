@@ -2835,3 +2835,81 @@ h3, h4, .card-title, .product-title { letter-spacing: -0.02em; }
     max-height: none !important;
     display: block;
 }
+
+/* ============================================
+   Who We Are — Team (beginner.app alternating photo + name/role)
+   ============================================ */
+.about-team-sec { padding: clamp(2.5rem, 6vh, 5rem) 0; border-top: 1px solid rgba(249,247,248,0.1); }
+.about-team-sec .hero-eyebrow { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+.team-list { display: flex; flex-direction: column; gap: clamp(3rem, 7vw, 6rem); }
+.team-member {
+    display: grid;
+    grid-template-columns: minmax(240px, 420px) 1fr;
+    align-items: center;
+    gap: clamp(1.75rem, 5vw, 4rem);
+}
+.team-member.team-reversed { grid-template-columns: 1fr minmax(240px, 420px); }
+.team-member.team-reversed .team-photo { order: 2; }
+.team-member.team-reversed .team-info { order: 1; text-align: right; }
+
+/* Placeholder photo: dark card with initials + subtle 'Photo' tag */
+.team-photo {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 14px;
+    overflow: hidden;
+    background: linear-gradient(150deg, #1b1b1b 0%, #101010 100%);
+    border: 1px solid rgba(249,247,248,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.team-initials {
+    font-family: var(--serif);
+    font-size: clamp(4rem, 9vw, 7rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: rgba(249,247,248,0.14);
+}
+.team-photo-tag {
+    position: absolute;
+    bottom: 0.9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(249,247,248,0.35);
+}
+.team-name {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin: 0 0 0.75rem 0;
+    background-image: linear-gradient(to right, #ffffff 0%, #ffffff 25%, rgba(255,255,255,0.32) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+.team-reversed .team-name {
+    background-image: linear-gradient(to left, #ffffff 0%, #ffffff 25%, rgba(255,255,255,0.32) 100%);
+}
+.team-role {
+    font-family: var(--mono);
+    font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #9a9a9a !important;
+    margin: 0;
+}
+
+@media (max-width: 720px) {
+    .team-member, .team-member.team-reversed { grid-template-columns: 1fr; gap: 1.25rem; }
+    .team-member.team-reversed .team-photo { order: 0; }
+    .team-member.team-reversed .team-info { order: 0; text-align: left; }
+    .team-photo { max-width: 320px; }
+}

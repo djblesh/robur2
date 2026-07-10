@@ -427,9 +427,22 @@
 
     <!-- Floating More Button -->
     <div class="floating-more">
-        <button class="floating-more-button" id="floatingMoreButton">
+        <button class="floating-more-button" id="floatingMoreButton" aria-label="More">
+            <span class="more-grid" aria-hidden="true">
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="3.6" height="3.6" rx="1"/>
+                    <rect x="6.7" y="0" width="3.6" height="3.6" rx="1"/>
+                    <rect x="13.4" y="0" width="3.6" height="3.6" rx="1"/>
+                    <rect x="0" y="6.7" width="3.6" height="3.6" rx="1"/>
+                    <rect x="6.7" y="6.7" width="3.6" height="3.6" rx="1"/>
+                    <rect x="13.4" y="6.7" width="3.6" height="3.6" rx="1"/>
+                    <rect x="0" y="13.4" width="3.6" height="3.6" rx="1"/>
+                    <rect x="6.7" y="13.4" width="3.6" height="3.6" rx="1"/>
+                    <rect x="13.4" y="13.4" width="3.6" height="3.6" rx="1"/>
+                </svg>
+            </span>
+            <span class="more-divider" aria-hidden="true"></span>
             <span class="more-text">More</span>
-            <span class="more-icon">+</span>
         </button>
         <div class="floating-more-menu" id="floatingMoreMenu">
             <div class="more-menu-item">

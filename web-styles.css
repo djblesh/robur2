@@ -3053,3 +3053,62 @@ a.contact-link:hover { border-bottom-color: rgba(249,247,248,0.7); opacity: 0.9;
 .about-pill-grid svg { display: block; }
 .about-pill-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.22); }
 .about-pill-text { font-family: var(--mono); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.02em; }
+
+/* ============================================
+   Document layout (beginner.app terms-of-service style)
+   Dark sidebar (logo + meta) + light mono content column
+   ============================================ */
+.doc-page { display: grid; grid-template-columns: 33% 1fr; min-height: 100vh; }
+.doc-sidebar {
+    position: sticky; top: 0; align-self: start;
+    height: 100vh; box-sizing: border-box;
+    background: #080808;
+    background-image: radial-gradient(120% 60% at 0% 0%, rgba(249,247,248,0.06) 0%, rgba(8,8,8,0) 55%);
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+.doc-logo { display: inline-flex; align-items: center; }
+.doc-logo .logo-image {
+    height: 44px; width: auto; filter: brightness(0) invert(1);
+}
+.doc-meta {
+    font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(249,247,248,0.4); margin: 0 0 clamp(4.5rem, 10vh, 7rem) 0;
+    display: inline-flex; align-items: center; gap: 0.65rem;
+}
+.doc-meta-dot { width: 5px; height: 5px; background: rgba(249,247,248,0.4); display: inline-block; }
+
+.doc-content { background: #f9f7f8; color: #363636; min-height: 100vh; }
+.doc-inner {
+    max-width: 760px;
+    padding: clamp(3rem, 9vh, 7rem) clamp(1.5rem, 5vw, 4.5rem);
+}
+.doc-title {
+    font-family: var(--mono); font-weight: 700; font-size: 1.05rem;
+    color: #080808 !important; -webkit-text-fill-color: #080808;
+    margin: 0 0 1.5rem 0; letter-spacing: 0;
+}
+.doc-heading {
+    font-family: var(--mono); font-weight: 700; font-size: 1.05rem;
+    color: #080808 !important; -webkit-text-fill-color: #080808;
+    margin: 2.75rem 0 1.25rem 0;
+}
+.doc-para {
+    font-family: var(--mono); font-size: 0.95rem; line-height: 1.75;
+    color: #4a4a4a !important; margin: 0 0 1.25rem 0; max-width: 62ch;
+}
+.doc-link {
+    color: #080808 !important; -webkit-text-fill-color: #080808;
+    text-decoration: none; border-bottom: 1px solid rgba(8,8,8,0.35); transition: border-color 0.2s ease;
+}
+.doc-link:hover { border-bottom-color: #080808; }
+
+@media (max-width: 820px) {
+    .doc-page { grid-template-columns: 1fr; }
+    .doc-sidebar {
+        position: static; height: auto; flex-direction: row; align-items: center;
+        justify-content: space-between; gap: 1rem;
+    }
+    .doc-meta { margin: 0; }
+    .doc-content, .doc-sidebar { min-height: 0; }
+}

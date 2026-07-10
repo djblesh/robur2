@@ -2790,3 +2790,45 @@ h3, h4, .card-title, .product-title { letter-spacing: -0.02em; }
 #divisions .division-card:hover .division-logo {
     transform: scale(1.06);
 }
+
+/* ============================================
+   Divisions: subtle title + tight logo row (no big empty cells)
+   ============================================ */
+#divisions .divisions-title {
+    font-size: clamp(1.3rem, 2.6vw, 2.1rem) !important;
+    margin: 0 0 clamp(1rem, 2.5vw, 1.75rem) 0 !important;
+    letter-spacing: -0.01em !important;
+}
+/* Replace the big square grid with a snug, centered wrapping row */
+#divisions .divisions-grid {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1rem, 3.5vw, 3rem) !important;
+    grid-auto-rows: auto !important;
+    margin-top: 0 !important;
+}
+#divisions .division-card {
+    aspect-ratio: auto !important;
+    flex: 0 0 auto;
+    width: auto !important;
+    min-height: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#divisions .division-logo-container {
+    position: relative !important;
+    inset: auto !important;
+    width: auto !important;
+    padding: 0.25rem !important;
+}
+#divisions .division-logo {
+    position: static !important;
+    height: clamp(58px, 8vw, 92px) !important;
+    width: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    display: block;
+}

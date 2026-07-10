@@ -2913,3 +2913,58 @@ h3, h4, .card-title, .product-title { letter-spacing: -0.02em; }
     .team-member.team-reversed .team-info { order: 0; text-align: left; }
     .team-photo { max-width: 320px; }
 }
+
+/* ============================================
+   Shared about-style: section heading + contact grid
+   ============================================ */
+.about-section-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0 0 1.1rem 0;
+    background-image: linear-gradient(to right, #ffffff 0%, #ffffff 25%, rgba(255,255,255,0.35) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* Contacts grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(2rem, 5vw, 3.5rem) clamp(2rem, 6vw, 5rem);
+    max-width: 52rem;
+}
+.contact-item { display: flex; flex-direction: column; gap: 0.6rem; }
+.contact-label {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #9a9a9a !important;
+    margin: 0;
+}
+.contact-value {
+    font-family: var(--font-default);
+    font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+    line-height: 1.35;
+    color: #f9f7f8 !important;
+    -webkit-text-fill-color: #f9f7f8;
+    text-decoration: none;
+    margin: 0;
+}
+a.contact-link {
+    display: inline-block;
+    border-bottom: 1px solid rgba(249,247,248,0.25);
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease, opacity 0.2s ease;
+    width: fit-content;
+}
+a.contact-link:hover { border-bottom-color: rgba(249,247,248,0.7); opacity: 0.9; }
+
+@media (max-width: 640px) {
+    .contact-grid { grid-template-columns: 1fr; }
+}

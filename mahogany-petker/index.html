@@ -65,9 +65,9 @@
   .hero-stats .stat strong{display:block;font-size:1.9rem;color:var(--orange);font-weight:800}
   .hero-stats .stat span{font-size:.82rem;color:rgba(255,255,255,.65);letter-spacing:.04em}
   .hero-art{position:relative}
-  .hero-art .card{background:linear-gradient(160deg,#fbfbfb,#e9e2d8);border-radius:16px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-  .hero-art .card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#9cc4e6 0%,#cfe2f2 42%,#d8ccb8 42%,#c9b79e 100%);opacity:1;z-index:0}
-  .hero-art svg{position:relative;z-index:1}
+  .hero-art .card{border-radius:18px;box-shadow:var(--shadow);position:relative;overflow:hidden;border:6px solid rgba(255,255,255,.06)}
+  .hero-art .card img{width:100%;height:440px;object-fit:cover;display:block}
+  .hero-art .card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,12,6,.35));pointer-events:none}
   .badge-float{position:absolute;left:-14px;bottom:26px;background:#fff;color:var(--ink);border-radius:12px;padding:14px 18px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;z-index:3}
   .badge-float .ic{width:40px;height:40px;background:var(--orange);border-radius:9px;display:grid;place-items:center;flex:0 0 auto}
   .badge-float strong{display:block;font-size:.95rem}
@@ -92,17 +92,18 @@
   .about ul.checks{list-style:none;margin-top:26px;display:grid;gap:14px}
   .about ul.checks li{display:flex;gap:12px;align-items:flex-start;font-weight:600;color:#3a332d}
   .about ul.checks li:before{content:"✓";flex:0 0 auto;width:24px;height:24px;background:var(--brown);color:#fff;border-radius:50%;display:grid;place-items:center;font-size:.75rem;font-weight:800}
-  .about-visual{background:linear-gradient(155deg,var(--brown),var(--charcoal));border-radius:18px;padding:30px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-  .about-visual .sky{position:absolute;inset:0;background:linear-gradient(180deg,#a9cbe6,#d7e6f2 45%,#cbb89c 45%,#b89e7f);z-index:0}
-  .about-visual svg{position:relative;z-index:1}
+  .about-visual{border-radius:18px;box-shadow:var(--shadow);position:relative;overflow:hidden;border:6px solid #fff}
+  .about-visual img{width:100%;height:440px;object-fit:cover;display:block}
 
   /* ---------- EQUIPMENT ---------- */
   .equip{background:linear-gradient(180deg,var(--paper),var(--paper-2))}
   .equip-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
   .equip-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 16px 40px -22px rgba(30,15,8,.4);border:1px solid var(--line);transition:.3s;display:flex;flex-direction:column}
   .equip-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px -22px rgba(30,15,8,.5)}
-  .equip-pic{position:relative;height:240px;overflow:hidden}
-  .equip-pic .scene{position:absolute;inset:0}
+  .equip-pic{position:relative;height:260px;overflow:hidden;background:#1a1a1a}
+  .equip-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .equip-card:hover .equip-pic img{transform:scale(1.06)}
+  .equip-pic:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(20,12,6,.4));z-index:2}
   .equip-pic .tag{position:absolute;left:18px;top:18px;background:var(--orange);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:5px;z-index:3}
   .equip-body{padding:28px}
   .equip-body h3{font-size:1.5rem;color:var(--ink)}
@@ -248,46 +249,7 @@
     </div>
     <div class="hero-art">
       <div class="card">
-        <!-- Tipper truck dumping, sky scene -->
-        <svg viewBox="0 0 480 300" role="img" aria-label="Tipper truck offloading material at a construction site">
-          <!-- clouds -->
-          <g fill="#ffffff" opacity=".85">
-            <ellipse cx="90" cy="55" rx="34" ry="15"/><ellipse cx="120" cy="50" rx="26" ry="13"/>
-            <ellipse cx="360" cy="42" rx="40" ry="16"/><ellipse cx="330" cy="48" rx="24" ry="12"/>
-          </g>
-          <!-- ground -->
-          <rect x="0" y="210" width="480" height="90" fill="#b89e7f"/>
-          <path d="M0 210 Q120 196 240 210 T480 208 V300 H0 Z" fill="#c9b79e"/>
-          <!-- dumped pile -->
-          <path d="M300 260 Q360 214 430 260 Z" fill="#7a5c3a"/>
-          <path d="M312 260 Q360 228 410 260 Z" fill="#8f6b45"/>
-          <!-- TRUCK -->
-          <g>
-            <!-- chassis -->
-            <rect x="70" y="196" width="250" height="16" rx="3" fill="#2b2b2b"/>
-            <!-- raised tipper bed -->
-            <g transform="rotate(-18 250 190)">
-              <rect x="150" y="120" width="180" height="70" rx="6" fill="#1f1f1f"/>
-              <rect x="150" y="120" width="180" height="70" rx="6" fill="none" stroke="#000" stroke-width="2"/>
-              <!-- material spilling -->
-              <path d="M320 150 q30 8 40 60 q-24 -20 -46 -6 Z" fill="#8f6b45"/>
-            </g>
-            <!-- cab -->
-            <path d="M70 150 h48 q10 0 12 10 l6 36 h-66 Z" fill="#f4f4f2"/>
-            <path d="M78 158 h34 l4 26 h-38 Z" fill="#8fb8d8"/>
-            <rect x="60" y="150" width="12" height="46" rx="3" fill="#e0e0dd"/>
-            <!-- wheels -->
-            <g fill="#1a1a1a">
-              <circle cx="95" cy="214" r="18"/><circle cx="170" cy="214" r="18"/>
-              <circle cx="215" cy="214" r="18"/><circle cx="290" cy="214" r="18"/>
-            </g>
-            <g fill="#5a5a5a">
-              <circle cx="95" cy="214" r="7"/><circle cx="170" cy="214" r="7"/>
-              <circle cx="215" cy="214" r="7"/><circle cx="290" cy="214" r="7"/>
-            </g>
-            <rect x="118" y="188" width="6" height="14" fill="#e87722"/>
-          </g>
-        </svg>
+        <img src="images/hero.jpg" alt="Modern tipper truck with its bed raised, offloading material on site" loading="eager">
       </div>
       <div class="badge-float">
         <span class="ic">
@@ -326,27 +288,7 @@
       <a href="#contact" class="btn btn-dark" style="margin-top:30px">Talk to Our Team →</a>
     </div>
     <div class="about-visual">
-      <div class="sky"></div>
-      <!-- Lowbed hauling scene -->
-      <svg viewBox="0 0 480 300" role="img" aria-label="Truck hauling a lowbed trailer with loading ramps">
-        <g fill="#ffffff" opacity=".8"><ellipse cx="110" cy="50" rx="36" ry="15"/><ellipse cx="370" cy="60" rx="30" ry="13"/></g>
-        <rect x="0" y="215" width="480" height="85" fill="#b89e7f"/>
-        <path d="M0 215 Q240 202 480 215 V300 H0 Z" fill="#c9b79e"/>
-        <!-- truck cab -->
-        <path d="M40 165 h44 q10 0 13 10 l7 40 H40 Z" fill="#f4f4f2"/>
-        <path d="M50 174 h30 l5 28 H50 Z" fill="#8fb8d8"/>
-        <!-- lowbed trailer (orange) -->
-        <rect x="104" y="200" width="250" height="12" fill="#e87722"/>
-        <rect x="120" y="188" width="220" height="14" fill="#f68a2c"/>
-        <!-- ramps -->
-        <path d="M354 200 l40 20 v6 l-40 -14 Z" fill="#e87722"/>
-        <path d="M366 200 l40 20 v6 l-40 -14 Z" fill="#c8631a"/>
-        <!-- deck ribs -->
-        <g stroke="#a8551a" stroke-width="2"><line x1="140" y1="188" x2="140" y2="200"/><line x1="180" y1="188" x2="180" y2="200"/><line x1="220" y1="188" x2="220" y2="200"/><line x1="260" y1="188" x2="260" y2="200"/><line x1="300" y1="188" x2="300" y2="200"/></g>
-        <!-- wheels -->
-        <g fill="#1a1a1a"><circle cx="70" cy="216" r="16"/><circle cx="150" cy="216" r="15"/><circle cx="190" cy="216" r="15"/><circle cx="300" cy="216" r="15"/><circle cx="336" cy="216" r="15"/></g>
-        <g fill="#5a5a5a"><circle cx="70" cy="216" r="6"/><circle cx="150" cy="216" r="6"/><circle cx="190" cy="216" r="6"/><circle cx="300" cy="216" r="6"/><circle cx="336" cy="216" r="6"/></g>
-      </svg>
+      <img src="images/site.jpg" alt="Fleet of earthmoving machines working together on an active construction site">
     </div>
   </div>
 </section>
@@ -365,32 +307,7 @@
       <article class="equip-card">
         <div class="equip-pic">
           <span class="tag">Tipper Grabbers</span>
-          <svg class="scene" viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Tipper truck with hydraulic grabber arm loading soil">
-            <rect width="480" height="240" fill="url(#g1)"/>
-            <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9cbe6"/><stop offset=".5" stop-color="#d7e6f2"/><stop offset=".5" stop-color="#c3ac8c"/><stop offset="1" stop-color="#a98a68"/></linearGradient></defs>
-            <g fill="#fff" opacity=".7"><ellipse cx="360" cy="45" rx="40" ry="16"/><ellipse cx="90" cy="40" rx="30" ry="13"/></g>
-            <!-- pile -->
-            <path d="M40 200 Q120 150 200 200 Z" fill="#7a5c3a"/>
-            <!-- truck body -->
-            <rect x="150" y="150" width="200" height="52" rx="4" fill="#1f1f1f"/>
-            <rect x="150" y="150" width="200" height="52" rx="4" fill="none" stroke="#000" stroke-width="2"/>
-            <!-- cab -->
-            <path d="M350 150 h44 q10 0 12 10 l6 42 h-62 Z" fill="#efefec"/>
-            <path d="M360 160 h30 l5 28 h-35 Z" fill="#8fb8d8"/>
-            <!-- grabber arm -->
-            <g stroke="#e87722" stroke-width="9" fill="none" stroke-linecap="round">
-              <path d="M250 150 L200 90 L140 110"/>
-            </g>
-            <!-- grab claw -->
-            <g transform="translate(120,110)" fill="#3a3a3a">
-              <path d="M0 0 q-14 6 -18 26 l8 3 q4 -16 14 -21 Z"/>
-              <path d="M20 0 q14 6 18 26 l-8 3 q-4 -16 -14 -21 Z"/>
-              <rect x="-4" y="-6" width="28" height="8" rx="2" fill="#e87722"/>
-            </g>
-            <!-- wheels -->
-            <g fill="#1a1a1a"><circle cx="185" cy="206" r="18"/><circle cx="255" cy="206" r="18"/><circle cx="360" cy="206" r="18"/></g>
-            <g fill="#5a5a5a"><circle cx="185" cy="206" r="7"/><circle cx="255" cy="206" r="7"/><circle cx="360" cy="206" r="7"/></g>
-          </svg>
+          <img src="images/grabber.jpg" alt="Tipper truck fitted with a hydraulic grabber claw for loading bulk material" loading="lazy">
         </div>
         <div class="equip-body">
           <h3>Tipper Grabbers</h3>
@@ -407,24 +324,7 @@
       <article class="equip-card">
         <div class="equip-pic">
           <span class="tag">Lowbeds</span>
-          <svg class="scene" viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Orange lowbed trailer with hydraulic loading ramps">
-            <rect width="480" height="240" fill="url(#g2)"/>
-            <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9cc0de"/><stop offset=".55" stop-color="#d3e2f0"/><stop offset=".55" stop-color="#bfa885"/><stop offset="1" stop-color="#a5865f"/></linearGradient></defs>
-            <g fill="#fff" opacity=".7"><ellipse cx="110" cy="46" rx="36" ry="15"/><ellipse cx="380" cy="55" rx="30" ry="12"/></g>
-            <!-- lowbed deck -->
-            <rect x="70" y="150" width="300" height="20" fill="#e87722"/>
-            <rect x="90" y="134" width="260" height="18" fill="#f68a2c"/>
-            <!-- gooseneck -->
-            <path d="M60 150 l14 -26 h20 v26 Z" fill="#c8631a"/>
-            <!-- ramps down -->
-            <path d="M370 150 l50 34 v8 l-50 -22 Z" fill="#e87722"/>
-            <path d="M384 150 l50 34 v8 l-50 -22 Z" fill="#c8631a"/>
-            <!-- deck ribs -->
-            <g stroke="#a8551a" stroke-width="3"><line x1="120" y1="134" x2="120" y2="150"/><line x1="160" y1="134" x2="160" y2="150"/><line x1="200" y1="134" x2="200" y2="150"/><line x1="240" y1="134" x2="240" y2="150"/><line x1="280" y1="134" x2="280" y2="150"/><line x1="320" y1="134" x2="320" y2="150"/></g>
-            <!-- wheels -->
-            <g fill="#1a1a1a"><circle cx="130" cy="176" r="17"/><circle cx="175" cy="176" r="17"/><circle cx="300" cy="176" r="17"/><circle cx="345" cy="176" r="17"/></g>
-            <g fill="#5a5a5a"><circle cx="130" cy="176" r="6"/><circle cx="175" cy="176" r="6"/><circle cx="300" cy="176" r="6"/><circle cx="345" cy="176" r="6"/></g>
-          </svg>
+          <img src="images/lowbed.jpg" alt="Low loader trailer with hydraulic ramps down, ready to load an excavator" loading="lazy">
         </div>
         <div class="equip-body">
           <h3>Lowbeds</h3>
@@ -595,7 +495,7 @@
     </div>
   </div>
   <div class="wrap foot-bar">
-    <span>© <span id="yr"></span> Mahogany Petker Resources (Pvt) Ltd. All rights reserved.</span>
+    <span>© <span id="yr"></span> Mahogany Petker Resources (Pvt) Ltd. All rights reserved. <span style="opacity:.55">· Equipment photos via Wikimedia Commons (CC)</span></span>
     <span class="slogan">Lifting Your Projects. Moving Your Business.</span>
   </div>
 </footer>

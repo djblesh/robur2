@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahogany Petker Resources | Equipment Hire &amp; Logistics Specialists</title>
+<meta name="description" content="Mahogany Petker Resources (Pvt) Ltd — reliable equipment hire and heavy logistics in Zimbabwe. Tipper grabbers, lowbeds and professional operators to keep your project on time and on budget.">
+<style>
+  :root{
+    --brown:#4a2418;
+    --brown-deep:#3a1c12;
+    --brown-mid:#6b3826;
+    --orange:#e87722;
+    --orange-bright:#f68a2c;
+    --ink:#161311;
+    --charcoal:#211d1a;
+    --paper:#f6f2ec;
+    --paper-2:#efe8de;
+    --white:#ffffff;
+    --muted:#8a8078;
+    --line:rgba(0,0,0,.09);
+    --shadow:0 20px 50px -18px rgba(30,15,8,.45);
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{line-height:1.1;letter-spacing:-.02em;font-weight:800}
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  .eyebrow{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.95rem;padding:15px 28px;border-radius:6px;transition:.25s;cursor:pointer;border:0}
+  .btn-primary{background:var(--orange);color:#fff;box-shadow:0 12px 26px -10px rgba(232,119,34,.7)}
+  .btn-primary:hover{background:var(--orange-bright);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+  .btn-dark{background:var(--brown);color:#fff}
+  .btn-dark:hover{background:var(--brown-mid);transform:translateY(-2px)}
+  section{position:relative}
+
+  /* ---------- HEADER ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(28,18,12,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .logo-mark{width:44px;height:44px;flex:0 0 auto}
+  .brand-txt strong{display:block;color:#fff;font-size:1.02rem;font-weight:800;letter-spacing:.01em;line-height:1}
+  .brand-txt span{display:block;color:var(--orange);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-top:3px}
+  nav ul{display:flex;gap:30px;list-style:none}
+  nav ul a{color:rgba(255,255,255,.82);font-size:.9rem;font-weight:600;transition:.2s}
+  nav ul a:hover{color:var(--orange)}
+  .nav-cta{background:var(--orange);color:#fff;padding:10px 20px;border-radius:5px;font-size:.85rem;font-weight:700}
+  .nav-cta:hover{background:var(--orange-bright)}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0}
+  .burger span{width:26px;height:2.5px;background:#fff;border-radius:2px}
+
+  /* ---------- HERO ---------- */
+  .hero{background:radial-gradient(1200px 600px at 75% -10%,rgba(232,119,34,.16),transparent 60%),linear-gradient(150deg,var(--brown-deep),var(--charcoal) 60%,#120d09);color:#fff;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:76px 0 90px}
+  .hero h1{font-size:clamp(2.4rem,5vw,4rem);color:#fff}
+  .hero h1 em{color:var(--orange);font-style:normal}
+  .hero p.lead{font-size:1.14rem;color:rgba(255,255,255,.8);margin:22px 0 34px;max-width:560px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-stats{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap}
+  .hero-stats .stat strong{display:block;font-size:1.9rem;color:var(--orange);font-weight:800}
+  .hero-stats .stat span{font-size:.82rem;color:rgba(255,255,255,.65);letter-spacing:.04em}
+  .hero-art{position:relative}
+  .hero-art .card{background:linear-gradient(160deg,#fbfbfb,#e9e2d8);border-radius:16px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero-art .card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#9cc4e6 0%,#cfe2f2 42%,#d8ccb8 42%,#c9b79e 100%);opacity:1;z-index:0}
+  .hero-art svg{position:relative;z-index:1}
+  .badge-float{position:absolute;left:-14px;bottom:26px;background:#fff;color:var(--ink);border-radius:12px;padding:14px 18px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;z-index:3}
+  .badge-float .ic{width:40px;height:40px;background:var(--orange);border-radius:9px;display:grid;place-items:center;flex:0 0 auto}
+  .badge-float strong{display:block;font-size:.95rem}
+  .badge-float span{font-size:.72rem;color:var(--muted)}
+
+  /* ---------- MARQUEE STRIP ---------- */
+  .strip{background:var(--orange);color:#3a1c0c}
+  .strip .wrap{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;padding:16px 24px;font-weight:800;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+  .strip span{display:flex;align-items:center;gap:10px}
+  .strip span:before{content:"";width:7px;height:7px;background:#3a1c0c;border-radius:50%}
+
+  /* ---------- SECTION TITLES ---------- */
+  .sec{padding:96px 0}
+  .sec-head{max-width:680px;margin-bottom:56px}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .sec-head h2{font-size:clamp(1.9rem,3.5vw,2.7rem);color:var(--ink)}
+  .sec-head p{color:#5f574f;margin-top:16px;font-size:1.06rem}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--white)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about ul.checks{list-style:none;margin-top:26px;display:grid;gap:14px}
+  .about ul.checks li{display:flex;gap:12px;align-items:flex-start;font-weight:600;color:#3a332d}
+  .about ul.checks li:before{content:"✓";flex:0 0 auto;width:24px;height:24px;background:var(--brown);color:#fff;border-radius:50%;display:grid;place-items:center;font-size:.75rem;font-weight:800}
+  .about-visual{background:linear-gradient(155deg,var(--brown),var(--charcoal));border-radius:18px;padding:30px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .about-visual .sky{position:absolute;inset:0;background:linear-gradient(180deg,#a9cbe6,#d7e6f2 45%,#cbb89c 45%,#b89e7f);z-index:0}
+  .about-visual svg{position:relative;z-index:1}
+
+  /* ---------- EQUIPMENT ---------- */
+  .equip{background:linear-gradient(180deg,var(--paper),var(--paper-2))}
+  .equip-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .equip-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 16px 40px -22px rgba(30,15,8,.4);border:1px solid var(--line);transition:.3s;display:flex;flex-direction:column}
+  .equip-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px -22px rgba(30,15,8,.5)}
+  .equip-pic{position:relative;height:240px;overflow:hidden}
+  .equip-pic .scene{position:absolute;inset:0}
+  .equip-pic .tag{position:absolute;left:18px;top:18px;background:var(--orange);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:5px;z-index:3}
+  .equip-body{padding:28px}
+  .equip-body h3{font-size:1.5rem;color:var(--ink)}
+  .equip-body>p{color:#5f574f;margin:12px 0 20px}
+  .equip-body ul{list-style:none;display:grid;gap:11px}
+  .equip-body ul li{display:flex;gap:11px;align-items:flex-start;font-weight:600;color:#3a332d;font-size:.94rem}
+  .equip-body ul li .dot{flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:rgba(232,119,34,.14);color:var(--orange);display:grid;place-items:center;font-size:.7rem;font-weight:900}
+
+  /* ---------- WHY ---------- */
+  .why{background:linear-gradient(150deg,var(--brown-deep),var(--charcoal));color:#fff}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:12px}
+  .why-card{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:32px 26px;transition:.3s}
+  .why-card:hover{background:rgba(255,255,255,.08);transform:translateY(-4px)}
+  .why-card .ic{width:56px;height:56px;border-radius:13px;background:var(--orange);display:grid;place-items:center;margin-bottom:20px}
+  .why-card h3{font-size:1.2rem;color:#fff;margin-bottom:10px}
+  .why-card p{color:rgba(255,255,255,.72);font-size:.95rem}
+
+  /* ---------- PROCESS ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:step}
+  .step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px 24px;position:relative}
+  .step:before{counter-increment:step;content:"0" counter(step);font-size:2.4rem;font-weight:800;color:rgba(232,119,34,.28);line-height:1;display:block;margin-bottom:14px}
+  .step h4{font-size:1.1rem;margin-bottom:8px}
+  .step p{color:#5f574f;font-size:.92rem}
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{background:var(--orange);color:#fff}
+  .cta-banner .wrap{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:56px 24px;flex-wrap:wrap}
+  .cta-banner h2{font-size:clamp(1.6rem,3vw,2.3rem);max-width:640px}
+  .cta-banner p{color:rgba(255,255,255,.9);margin-top:8px}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--white)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+  .contact-cards{display:grid;gap:18px}
+  .c-card{display:flex;gap:18px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:22px 24px}
+  .c-card .ic{flex:0 0 auto;width:50px;height:50px;border-radius:12px;background:var(--brown);display:grid;place-items:center}
+  .c-card h4{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .c-card a,.c-card p{font-size:1.08rem;font-weight:700;color:var(--ink)}
+  .c-card a:hover{color:var(--orange)}
+  form{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:32px}
+  form h3{font-size:1.3rem;margin-bottom:6px}
+  form p.sub{color:#5f574f;font-size:.92rem;margin-bottom:22px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.8rem;font-weight:700;margin-bottom:7px;color:#3a332d}
+  .field input,.field textarea,.field select{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:8px;font-family:inherit;font-size:.95rem;background:#fff;transition:.2s}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,119,34,.14)}
+  .field textarea{resize:vertical;min-height:110px}
+  form button{width:100%;justify-content:center;margin-top:6px}
+  .form-note{font-size:.8rem;color:var(--muted);text-align:center;margin-top:14px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:rgba(255,255,255,.7)}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding:64px 0 44px}
+  .foot-brand .brand{margin-bottom:18px}
+  .foot-brand p{font-size:.92rem;max-width:340px}
+  .foot-col h5{color:#fff;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+  .foot-col ul{list-style:none;display:grid;gap:11px}
+  .foot-col ul a{font-size:.92rem;transition:.2s}
+  .foot-col ul a:hover{color:var(--orange)}
+  .foot-bar{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.82rem}
+  .foot-bar .slogan{color:var(--orange);font-weight:700;font-style:italic}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .hero-grid,.about-grid,.equip-grid,.contact-grid{grid-template-columns:1fr}
+    .why-grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .foot-top{grid-template-columns:1fr}
+    nav ul,.nav-cta{display:none}
+    .burger{display:flex}
+    nav.open ul{display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:var(--charcoal);padding:20px 24px;gap:18px;border-bottom:1px solid rgba(255,255,255,.1)}
+    .hero-art{order:-1}
+  }
+  @media(max-width:520px){
+    .steps{grid-template-columns:1fr}
+    .cta-banner .wrap{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ REUSABLE SVG DEFS: LOGO ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Logo mark: brown circle with truck silhouette + M -->
+    <symbol id="logoMark" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="48" fill="#4a2418"/>
+      <circle cx="50" cy="50" r="48" fill="none" stroke="#e87722" stroke-width="3"/>
+      <path d="M50 8 A42 42 0 0 1 92 50" fill="none" stroke="#e87722" stroke-width="4" stroke-linecap="round"/>
+      <!-- M letter -->
+      <path d="M28 68 V36 L42 58 L56 36 V68" fill="none" stroke="#f6f2ec" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- little truck -->
+      <g transform="translate(60,60)">
+        <rect x="0" y="-8" width="12" height="9" rx="1" fill="#e87722"/>
+        <rect x="12" y="-4" width="8" height="5" fill="#f6f2ec"/>
+        <circle cx="4" cy="3" r="2.4" fill="#f6f2ec"/>
+        <circle cx="15" cy="3" r="2.4" fill="#f6f2ec"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap nav">
+    <a href="#home" class="brand">
+      <svg class="logo-mark"><use href="#logoMark"/></svg>
+      <span class="brand-txt">
+        <strong>MAHOGANY PETKER</strong>
+        <span>Resources (Pvt) Ltd</span>
+      </span>
+    </a>
+    <nav id="nav">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#equipment">Equipment</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Equipment Hire &amp; Logistics Specialists</span>
+      <h1>Heavy Equipment, <em>Moved Right.</em> Every Load, On Schedule.</h1>
+      <p class="lead">Mahogany Petker Resources supplies well-maintained tipper grabbers, lowbed transport and skilled operators across Zimbabwe — so your project keeps moving on time and on budget.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Request a Quote →</a>
+        <a href="#equipment" class="btn btn-ghost">View Our Fleet</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>24/7</strong><span>Site Availability</span></div>
+        <div class="stat"><strong>100%</strong><span>Certified Operators</span></div>
+        <div class="stat"><strong>On-Time</strong><span>Delivery Promise</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="card">
+        <!-- Tipper truck dumping, sky scene -->
+        <svg viewBox="0 0 480 300" role="img" aria-label="Tipper truck offloading material at a construction site">
+          <!-- clouds -->
+          <g fill="#ffffff" opacity=".85">
+            <ellipse cx="90" cy="55" rx="34" ry="15"/><ellipse cx="120" cy="50" rx="26" ry="13"/>
+            <ellipse cx="360" cy="42" rx="40" ry="16"/><ellipse cx="330" cy="48" rx="24" ry="12"/>
+          </g>
+          <!-- ground -->
+          <rect x="0" y="210" width="480" height="90" fill="#b89e7f"/>
+          <path d="M0 210 Q120 196 240 210 T480 208 V300 H0 Z" fill="#c9b79e"/>
+          <!-- dumped pile -->
+          <path d="M300 260 Q360 214 430 260 Z" fill="#7a5c3a"/>
+          <path d="M312 260 Q360 228 410 260 Z" fill="#8f6b45"/>
+          <!-- TRUCK -->
+          <g>
+            <!-- chassis -->
+            <rect x="70" y="196" width="250" height="16" rx="3" fill="#2b2b2b"/>
+            <!-- raised tipper bed -->
+            <g transform="rotate(-18 250 190)">
+              <rect x="150" y="120" width="180" height="70" rx="6" fill="#1f1f1f"/>
+              <rect x="150" y="120" width="180" height="70" rx="6" fill="none" stroke="#000" stroke-width="2"/>
+              <!-- material spilling -->
+              <path d="M320 150 q30 8 40 60 q-24 -20 -46 -6 Z" fill="#8f6b45"/>
+            </g>
+            <!-- cab -->
+            <path d="M70 150 h48 q10 0 12 10 l6 36 h-66 Z" fill="#f4f4f2"/>
+            <path d="M78 158 h34 l4 26 h-38 Z" fill="#8fb8d8"/>
+            <rect x="60" y="150" width="12" height="46" rx="3" fill="#e0e0dd"/>
+            <!-- wheels -->
+            <g fill="#1a1a1a">
+              <circle cx="95" cy="214" r="18"/><circle cx="170" cy="214" r="18"/>
+              <circle cx="215" cy="214" r="18"/><circle cx="290" cy="214" r="18"/>
+            </g>
+            <g fill="#5a5a5a">
+              <circle cx="95" cy="214" r="7"/><circle cx="170" cy="214" r="7"/>
+              <circle cx="215" cy="214" r="7"/><circle cx="290" cy="214" r="7"/>
+            </g>
+            <rect x="118" y="188" width="6" height="14" fill="#e87722"/>
+          </g>
+        </svg>
+      </div>
+      <div class="badge-float">
+        <span class="ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 6v6c0 5 3.8 8.4 9 10 5.2-1.6 9-5 9-10V6l-9-4Z" fill="#fff"/><path d="m8.5 12 2.4 2.4L16 9.5" stroke="#e87722" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div><strong>Safe &amp; Insured</strong><span>Well-maintained fleet</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="strip">
+  <div class="wrap">
+    <span>Tipper Grabbers</span>
+    <span>Lowbed Transport</span>
+    <span>Bulk Material Handling</span>
+    <span>Professional Operators</span>
+    <span>Nationwide Logistics</span>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="sec about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="eyebrow">Who We Are</span>
+      <h2 style="font-size:clamp(1.9rem,3.5vw,2.7rem)">Your trusted partner for heavy equipment and dependable logistics.</h2>
+      <p style="color:#5f574f;margin-top:18px;font-size:1.06rem">Mahogany Petker Resources (Pvt) Ltd is a Zimbabwean equipment-hire and logistics company built around one simple promise: reliable machines, professional operators, and loads that arrive when they're supposed to. From bulk earthmoving to transporting heavy plant, we give contractors and project managers one less thing to worry about.</p>
+      <ul class="checks">
+        <li>Modern, regularly serviced fleet you can count on</li>
+        <li>Experienced, safety-trained operators on every hire</li>
+        <li>Flexible hire terms — by the day, week or full project</li>
+        <li>Transparent pricing with no hidden surprises</li>
+      </ul>
+      <a href="#contact" class="btn btn-dark" style="margin-top:30px">Talk to Our Team →</a>
+    </div>
+    <div class="about-visual">
+      <div class="sky"></div>
+      <!-- Lowbed hauling scene -->
+      <svg viewBox="0 0 480 300" role="img" aria-label="Truck hauling a lowbed trailer with loading ramps">
+        <g fill="#ffffff" opacity=".8"><ellipse cx="110" cy="50" rx="36" ry="15"/><ellipse cx="370" cy="60" rx="30" ry="13"/></g>
+        <rect x="0" y="215" width="480" height="85" fill="#b89e7f"/>
+        <path d="M0 215 Q240 202 480 215 V300 H0 Z" fill="#c9b79e"/>
+        <!-- truck cab -->
+        <path d="M40 165 h44 q10 0 13 10 l7 40 H40 Z" fill="#f4f4f2"/>
+        <path d="M50 174 h30 l5 28 H50 Z" fill="#8fb8d8"/>
+        <!-- lowbed trailer (orange) -->
+        <rect x="104" y="200" width="250" height="12" fill="#e87722"/>
+        <rect x="120" y="188" width="220" height="14" fill="#f68a2c"/>
+        <!-- ramps -->
+        <path d="M354 200 l40 20 v6 l-40 -14 Z" fill="#e87722"/>
+        <path d="M366 200 l40 20 v6 l-40 -14 Z" fill="#c8631a"/>
+        <!-- deck ribs -->
+        <g stroke="#a8551a" stroke-width="2"><line x1="140" y1="188" x2="140" y2="200"/><line x1="180" y1="188" x2="180" y2="200"/><line x1="220" y1="188" x2="220" y2="200"/><line x1="260" y1="188" x2="260" y2="200"/><line x1="300" y1="188" x2="300" y2="200"/></g>
+        <!-- wheels -->
+        <g fill="#1a1a1a"><circle cx="70" cy="216" r="16"/><circle cx="150" cy="216" r="15"/><circle cx="190" cy="216" r="15"/><circle cx="300" cy="216" r="15"/><circle cx="336" cy="216" r="15"/></g>
+        <g fill="#5a5a5a"><circle cx="70" cy="216" r="6"/><circle cx="150" cy="216" r="6"/><circle cx="190" cy="216" r="6"/><circle cx="300" cy="216" r="6"/><circle cx="336" cy="216" r="6"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EQUIPMENT ============ -->
+<section class="sec equip" id="equipment">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Our Equipment</span>
+      <h2>Purpose-built machines for demanding jobs</h2>
+      <p>Whether you're clearing bulk material or moving heavy plant across the country, we've got the right unit — and the right operator — for the task.</p>
+    </div>
+    <div class="equip-grid">
+
+      <!-- TIPPER GRABBER -->
+      <article class="equip-card">
+        <div class="equip-pic">
+          <span class="tag">Tipper Grabbers</span>
+          <svg class="scene" viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Tipper truck with hydraulic grabber arm loading soil">
+            <rect width="480" height="240" fill="url(#g1)"/>
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9cbe6"/><stop offset=".5" stop-color="#d7e6f2"/><stop offset=".5" stop-color="#c3ac8c"/><stop offset="1" stop-color="#a98a68"/></linearGradient></defs>
+            <g fill="#fff" opacity=".7"><ellipse cx="360" cy="45" rx="40" ry="16"/><ellipse cx="90" cy="40" rx="30" ry="13"/></g>
+            <!-- pile -->
+            <path d="M40 200 Q120 150 200 200 Z" fill="#7a5c3a"/>
+            <!-- truck body -->
+            <rect x="150" y="150" width="200" height="52" rx="4" fill="#1f1f1f"/>
+            <rect x="150" y="150" width="200" height="52" rx="4" fill="none" stroke="#000" stroke-width="2"/>
+            <!-- cab -->
+            <path d="M350 150 h44 q10 0 12 10 l6 42 h-62 Z" fill="#efefec"/>
+            <path d="M360 160 h30 l5 28 h-35 Z" fill="#8fb8d8"/>
+            <!-- grabber arm -->
+            <g stroke="#e87722" stroke-width="9" fill="none" stroke-linecap="round">
+              <path d="M250 150 L200 90 L140 110"/>
+            </g>
+            <!-- grab claw -->
+            <g transform="translate(120,110)" fill="#3a3a3a">
+              <path d="M0 0 q-14 6 -18 26 l8 3 q4 -16 14 -21 Z"/>
+              <path d="M20 0 q14 6 18 26 l-8 3 q-4 -16 -14 -21 Z"/>
+              <rect x="-4" y="-6" width="28" height="8" rx="2" fill="#e87722"/>
+            </g>
+            <!-- wheels -->
+            <g fill="#1a1a1a"><circle cx="185" cy="206" r="18"/><circle cx="255" cy="206" r="18"/><circle cx="360" cy="206" r="18"/></g>
+            <g fill="#5a5a5a"><circle cx="185" cy="206" r="7"/><circle cx="255" cy="206" r="7"/><circle cx="360" cy="206" r="7"/></g>
+          </svg>
+        </div>
+        <div class="equip-body">
+          <h3>Tipper Grabbers</h3>
+          <p>Powerful grab-loaders that dig, lift and haul in a single unit — perfect for sand, soil, rubble and demolition waste without needing a separate excavator.</p>
+          <ul>
+            <li><span class="dot">✓</span> Heavy-duty performance for the toughest sites</li>
+            <li><span class="dot">✓</span> Ideal for bulk material handling &amp; loading</li>
+            <li><span class="dot">✓</span> Built for efficiency, uptime and reliability</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- LOWBED -->
+      <article class="equip-card">
+        <div class="equip-pic">
+          <span class="tag">Lowbeds</span>
+          <svg class="scene" viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Orange lowbed trailer with hydraulic loading ramps">
+            <rect width="480" height="240" fill="url(#g2)"/>
+            <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9cc0de"/><stop offset=".55" stop-color="#d3e2f0"/><stop offset=".55" stop-color="#bfa885"/><stop offset="1" stop-color="#a5865f"/></linearGradient></defs>
+            <g fill="#fff" opacity=".7"><ellipse cx="110" cy="46" rx="36" ry="15"/><ellipse cx="380" cy="55" rx="30" ry="12"/></g>
+            <!-- lowbed deck -->
+            <rect x="70" y="150" width="300" height="20" fill="#e87722"/>
+            <rect x="90" y="134" width="260" height="18" fill="#f68a2c"/>
+            <!-- gooseneck -->
+            <path d="M60 150 l14 -26 h20 v26 Z" fill="#c8631a"/>
+            <!-- ramps down -->
+            <path d="M370 150 l50 34 v8 l-50 -22 Z" fill="#e87722"/>
+            <path d="M384 150 l50 34 v8 l-50 -22 Z" fill="#c8631a"/>
+            <!-- deck ribs -->
+            <g stroke="#a8551a" stroke-width="3"><line x1="120" y1="134" x2="120" y2="150"/><line x1="160" y1="134" x2="160" y2="150"/><line x1="200" y1="134" x2="200" y2="150"/><line x1="240" y1="134" x2="240" y2="150"/><line x1="280" y1="134" x2="280" y2="150"/><line x1="320" y1="134" x2="320" y2="150"/></g>
+            <!-- wheels -->
+            <g fill="#1a1a1a"><circle cx="130" cy="176" r="17"/><circle cx="175" cy="176" r="17"/><circle cx="300" cy="176" r="17"/><circle cx="345" cy="176" r="17"/></g>
+            <g fill="#5a5a5a"><circle cx="130" cy="176" r="6"/><circle cx="175" cy="176" r="6"/><circle cx="300" cy="176" r="6"/><circle cx="345" cy="176" r="6"/></g>
+          </svg>
+        </div>
+        <div class="equip-body">
+          <h3>Lowbeds</h3>
+          <p>Low-loader trailers engineered to move excavators, graders and oversized plant safely and legally — with hydraulic ramps that make loading fast and simple.</p>
+          <ul>
+            <li><span class="dot">✓</span> Safe &amp; secure transport for heavy plant</li>
+            <li><span class="dot">✓</span> Designed for genuinely heavy loads</li>
+            <li><span class="dot">✓</span> Hydraulic ramps for quick, easy loading</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY US ============ -->
+<section class="sec why" id="why">
+  <div class="wrap">
+    <div class="sec-head center" style="color:#fff">
+      <span class="eyebrow">Why Mahogany Petker</span>
+      <h2 style="color:#fff">Built to keep your project moving</h2>
+      <p style="color:rgba(255,255,255,.72)">We provide safe, well-maintained equipment and professional operators to keep your project on time and on budget.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 6v6c0 5 3.8 8.4 9 10 5.2-1.6 9-5 9-10V6l-9-4Z" fill="#fff"/><path d="m8.5 12 2.4 2.4L16 9.5" stroke="#e87722" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>Safety First</h3>
+        <p>Every unit is regularly inspected and serviced, and every operator is trained to work to strict on-site safety standards.</p>
+      </div>
+      <div class="why-card">
+        <span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <h3>On-Time, Every Time</h3>
+        <p>We understand that idle equipment costs money. Our fleet is dispatched to hit your schedule and keep the job flowing.</p>
+      </div>
+      <div class="why-card">
+        <span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <h3>On Budget</h3>
+        <p>Clear, competitive rates and honest advice on the right machine for the job — no over-hiring, no surprise costs.</p>
+      </div>
+      <div class="why-card">
+        <span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.5" stroke="#fff" stroke-width="2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M16 5a3.5 3.5 0 0 1 0 6M18.5 20c0-2.5-1-4.7-2.6-6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <h3>Skilled Operators</h3>
+        <p>Hire the machine and the expertise. Our experienced operators get more done, more safely, in less time.</p>
+      </div>
+      <div class="why-card">
+        <span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 13l2-6h9l3 4h4v5h-2" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><circle cx="7" cy="18" r="2" stroke="#fff" stroke-width="2"/><circle cx="17" cy="18" r="2" stroke="#fff" stroke-width="2"/></svg></span>
+        <h3>Modern Fleet</h3>
+        <p>Well-maintained, capable machines mean fewer breakdowns and more productive hours on your site.</p>
+      </div>
+      <div class="why-card">
+        <span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.2-7-10a7 7 0 0 1 14 0c0 4.8-7 10-7 10Z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.5" stroke="#fff" stroke-width="2"/></svg></span>
+        <h3>Nationwide Reach</h3>
+        <p>Based in Mtapa Industrial Park and ready to mobilise equipment and logistics wherever your project needs us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="sec" id="process" style="background:var(--white)">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">How It Works</span>
+      <h2>Hiring with us is simple</h2>
+      <p>From first call to job done — four straightforward steps.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h4>Tell Us Your Job</h4><p>Share what you're moving or handling, where, and for how long. We'll advise on the right unit.</p></div>
+      <div class="step"><h4>Get Your Quote</h4><p>Receive a clear, competitive quote with transparent rates and availability — usually the same day.</p></div>
+      <div class="step"><h4>We Mobilise</h4><p>Machine and operator arrive on site, on schedule, ready to work safely from hour one.</p></div>
+      <div class="step"><h4>You Keep Moving</h4><p>Your project stays on time and on budget while we handle the heavy lifting and logistics.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BANNER ============ -->
+<section class="cta-banner">
+  <div class="wrap">
+    <div>
+      <h2>Have a job that needs moving? Let's talk today.</h2>
+      <p>Fast quotes, reliable machines and operators who show up ready to work.</p>
+    </div>
+    <a href="tel:+263772812235" class="btn btn-dark" style="background:#3a1c12">📞 +263 77 281 2235</a>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Contact Us Today</span>
+      <h2>Get a quote or ask us anything</h2>
+      <p>Reach out and we'll get back to you with availability and pricing for your project.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-cards">
+        <div class="c-card">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.2-7-10a7 7 0 0 1 14 0c0 4.8-7 10-7 10Z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.6" stroke="#fff" stroke-width="2"/></svg></span>
+          <div><h4>Address</h4><p>8105 Juba Rd, Mtapa Industrial Park, Zimbabwe</p></div>
+        </div>
+        <div class="c-card">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L20 13l1 4v2a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1Z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg></span>
+          <div><h4>Cell</h4><a href="tel:+263772812235">+263 77 281 2235</a></div>
+        </div>
+        <div class="c-card">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#fff" stroke-width="2"/><path d="m4 7 8 6 8-6" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg></span>
+          <div><h4>Email</h4><a href="mailto:riaz_petker@yahoo.com">riaz_petker@yahoo.com</a></div>
+        </div>
+        <div class="c-card">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <div><h4>Hours</h4><p>Mon–Sat, 7:00am – 6:00pm · Emergency hire on request</p></div>
+        </div>
+      </div>
+
+      <form onsubmit="handleSubmit(event)">
+        <h3>Request a Quote</h3>
+        <p class="sub">Tell us about your job and we'll get right back to you.</p>
+        <div class="field"><label for="name">Full Name</label><input id="name" type="text" placeholder="Your name" required></div>
+        <div class="field"><label for="phone">Phone / WhatsApp</label><input id="phone" type="tel" placeholder="+263 …" required></div>
+        <div class="field"><label for="service">What do you need?</label>
+          <select id="service">
+            <option>Tipper Grabber Hire</option>
+            <option>Lowbed Transport</option>
+            <option>Bulk Material Handling</option>
+            <option>Operator + Equipment</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="field"><label for="msg">Job Details</label><textarea id="msg" placeholder="Location, dates, and what you're moving or handling…"></textarea></div>
+        <button type="submit" class="btn btn-primary">Send Request →</button>
+        <p class="form-note">Prefer to talk? Call <strong>+263 77 281 2235</strong> or email <strong>riaz_petker@yahoo.com</strong></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot-top">
+    <div class="foot-brand">
+      <div class="brand">
+        <svg class="logo-mark" style="width:46px;height:46px"><use href="#logoMark"/></svg>
+        <span class="brand-txt">
+          <strong>MAHOGANY PETKER</strong>
+          <span>Resources (Pvt) Ltd</span>
+        </span>
+      </div>
+      <p>Equipment hire &amp; logistics specialists. Safe, well-maintained machines and professional operators keeping your project moving on time and on budget.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#equipment">Our Equipment</a></li>
+        <li><a href="#why">Why Choose Us</a></li>
+        <li><a href="#process">How It Works</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Get In Touch</h5>
+      <ul>
+        <li><a href="tel:+263772812235">+263 77 281 2235</a></li>
+        <li><a href="mailto:riaz_petker@yahoo.com">riaz_petker@yahoo.com</a></li>
+        <li><a href="#contact">8105 Juba Rd, Mtapa Ind. Park</a></li>
+        <li><a href="#contact">Request a Quote</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bar">
+    <span>© <span id="yr"></span> Mahogany Petker Resources (Pvt) Ltd. All rights reserved.</span>
+    <span class="slogan">Lifting Your Projects. Moving Your Business.</span>
+  </div>
+</footer>
+
+<script>
+  // mobile nav
+  const burger=document.getElementById('burger'),nav=document.getElementById('nav');
+  burger.addEventListener('click',()=>nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+  // year
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  // form
+  function handleSubmit(e){
+    e.preventDefault();
+    const name=document.getElementById('name').value||'there';
+    alert('Thanks, '+name+'! Your request has been noted. Please also call or WhatsApp +263 77 281 2235 so we can confirm availability right away.');
+    e.target.reset();
+  }
+</script>
+</body>
+</html>

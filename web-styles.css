@@ -3181,15 +3181,18 @@ a.contact-link:hover { border-bottom-color: rgba(249,247,248,0.7); opacity: 0.9;
 /* ============================================
    Divisions — subtle Robur logo watermark
    ============================================ */
-#divisions .container { position: relative; overflow: hidden; }
+#divisions .container { position: relative; }
 #divisions .divisions-title, #divisions .divisions-grid { position: relative; z-index: 1; }
 .divisions-watermark {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: min(78%, 820px);
-    max-width: none;
-    opacity: 0.05;
+    width: min(42%, 380px);
+    height: auto;
+    max-width: 90%;
+    max-height: 80%;
+    object-fit: contain;
+    opacity: 0.06;
     filter: grayscale(1) brightness(0);
     pointer-events: none;
     z-index: 0;

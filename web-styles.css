@@ -3268,9 +3268,22 @@ a.contact-link:hover { border-bottom-color: rgba(249,247,248,0.7); opacity: 0.9;
     padding-bottom: 0.08em;
     margin-bottom: -0.08em;
 }
+/* Clear the gradient from the parent (overflow-clip on the child lines breaks
+   an ancestor background-clip:text). Put the gradient on each sliding line. */
+.hero-title {
+    background-image: none !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+    -webkit-text-fill-color: #f9f7f8 !important;
+}
 .hero-title .title-line .tl-inner {
     display: block;
     will-change: transform;
+    background-image: linear-gradient(to right, #ffffff 0%, #ffffff 15%, rgba(255,255,255,0.30) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
     animation: heroLineSlide 1.15s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 .hero-title .title-line:nth-child(1) .tl-inner { animation-delay: 0.20s; }

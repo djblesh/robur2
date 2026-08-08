@@ -3203,19 +3203,16 @@ a.contact-link:hover { border-bottom-color: rgba(249,247,248,0.7); opacity: 0.9;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
     color: #9a9a9a;
-    border: 1px solid rgba(249, 247, 248, 0.18);
+    border: none;
+    background: none;
+    padding: 0;
     flex-shrink: 0;
     text-decoration: none;
-    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
-.acclaim-social svg { width: 18px; height: 18px; display: block; }
+.acclaim-social svg { width: 20px; height: 20px; display: block; }
 .acclaim-social:hover {
     color: #0a66c2;
-    border-color: #0a66c2;
-    background: rgba(10, 102, 194, 0.1);
     transform: translateY(-1px);
 }

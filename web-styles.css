@@ -3216,3 +3216,14 @@ a.contact-link:hover { border-bottom-color: rgba(249,247,248,0.7); opacity: 0.9;
     color: #0a66c2;
     transform: translateY(-1px);
 }
+
+/* Vision section — right-aligned (removes ragged trailing gaps) */
+.about-vision-sec .hero-eyebrow,
+.about-vision-sec .core-values-label,
+.about-vision-statement { text-align: right !important; }
+.about-vision-statement {
+    max-width: 100% !important;
+    margin-left: auto;
+    background-image: linear-gradient(to left, #ffffff 0%, #ffffff 22%, rgba(255,255,255,0.3) 100%) !important;
+}
+.about-vision-sec .core-values-list { justify-content: flex-end; }

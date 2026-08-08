@@ -3246,3 +3246,25 @@ a.contact-link:hover { border-bottom-color: rgba(249,247,248,0.7); opacity: 0.9;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+/* ============================================
+   Hero text — beginner.app-style staggered reveal on load
+   ============================================ */
+@keyframes heroReveal {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.hero-eyebrow {
+    animation: heroReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+}
+.hero-title .title-line {
+    animation: heroReveal 1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+.hero-title .title-line:nth-child(1) { animation-delay: 0.28s; }
+.hero-title .title-line:nth-child(2) { animation-delay: 0.42s; }
+.hero-title .title-line:nth-child(3) { animation-delay: 0.56s; }
+.hero-title .title-line:nth-child(4) { animation-delay: 0.70s; }
+.hero-title .title-line:nth-child(5) { animation-delay: 0.84s; }
+.hero-subtitle {
+    animation: heroReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.92s backwards;
+}

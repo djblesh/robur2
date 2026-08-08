@@ -3256,8 +3256,8 @@ a.contact-link:hover { border-bottom-color: rgba(249,247,248,0.7); opacity: 0.9;
 }
 /* Slide reveal: each line slides in from the left, like beginner.app */
 @keyframes heroLineSlide {
-    from { transform: translateX(-2.5em); opacity: 0; }
-    to   { transform: translateX(0);      opacity: 1; }
+    from { transform: translateX(2.5em); opacity: 0; }
+    to   { transform: translateX(0);     opacity: 1; }
 }
 .hero-eyebrow {
     animation: heroReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
@@ -3284,7 +3284,7 @@ a.contact-link:hover { border-bottom-color: rgba(249,247,248,0.7); opacity: 0.9;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    animation: heroLineSlide 1.15s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation: heroLineSlide 1.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 .hero-title .title-line:nth-child(1) .tl-inner { animation-delay: 0.20s; }
 .hero-title .title-line:nth-child(2) .tl-inner { animation-delay: 0.33s; }

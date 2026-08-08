@@ -3286,7 +3286,7 @@ html, body { overflow-x: hidden; }
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    animation: heroLineSlide 1.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation: heroLineSlide 2.3s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 .hero-title .title-line:nth-child(1) .tl-inner { animation-delay: 0.20s; }
 .hero-title .title-line:nth-child(2) .tl-inner { animation-delay: 0.33s; }

@@ -3217,13 +3217,29 @@ a.contact-link:hover { border-bottom-color: rgba(249,247,248,0.7); opacity: 0.9;
     transform: translateY(-1px);
 }
 
-/* Vision section — right-aligned (removes ragged trailing gaps) */
+/* Vision section — left-aligned */
 .about-vision-sec .hero-eyebrow,
 .about-vision-sec .core-values-label,
-.about-vision-statement { text-align: right !important; }
+.about-vision-statement { text-align: left !important; }
 .about-vision-statement {
     max-width: 100% !important;
-    margin-left: auto;
-    background-image: linear-gradient(to left, #ffffff 0%, #ffffff 22%, rgba(255,255,255,0.3) 100%) !important;
+    margin-left: 0;
+    background-image: linear-gradient(to right, #ffffff 0%, #ffffff 30%, rgba(255,255,255,0.35) 100%) !important;
 }
-.about-vision-sec .core-values-list { justify-content: flex-end; }
+.about-vision-sec .core-values-list { justify-content: flex-start; }
+
+/* Mission story paragraphs — big serif gradient statements (beginner.app MODEL style) */
+.about-story {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 3.4vw, 2.9rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    max-width: 24ch;
+    margin: 0 0 clamp(2rem, 4vw, 3rem) 0;
+    color: transparent;
+    background-image: linear-gradient(to right, #ffffff 0%, #ffffff 30%, rgba(255,255,255,0.35) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
